@@ -1,0 +1,36 @@
+---
+/**
+ * Assinatura da página: a única sala escura numa casa clara.
+ * Três confissões em primeira pessoa (copy verbatim da página
+ * original) em serif itálico grande sobre ink. Identificação
+ * emocional antes da nomeação clínica do bloco 2.
+ * Único bloco com stagger orquestrado (--d).
+ */
+const vozes = [
+  { fala: '"Eu travo."', eco: 'Só de pensar, o corpo já se fecha.' },
+  { fala: '"Eu finjo que estou cansada."', eco: 'Para evitar a dor e a frustração.' },
+  { fala: '"Eu tenho medo de tentar."', eco: 'Cada tentativa parece piorar tudo.' },
+];
+---
+
+<section class="bg-ink">
+  <div class="mx-auto w-full max-w-5xl px-5 py-14 sm:px-8 sm:py-20">
+    <p class="eyebrow text-brand-soft" data-reveal>O que ninguém fala em voz alta</p>
+
+    <div class="mt-8 space-y-8 sm:mt-10 sm:space-y-9">
+      {
+        vozes.map((v, i) => (
+          <blockquote data-reveal style={`--d:${i * 120}ms`}>
+            <p class="font-serif text-h2 italic text-surface">{v.fala}</p>
+            <p class="mt-1.5 text-fine text-faint">{v.eco}</p>
+          </blockquote>
+        ))
+      }
+    </div>
+
+    <p class="mt-10 max-w-md text-body text-surface/80" data-reveal style="--d:360ms">
+      Isso é mais comum do que você imagina. Não é frescura — e não é um problema só
+      seu.
+    </p>
+  </div>
+</section>

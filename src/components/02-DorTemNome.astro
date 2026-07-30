@@ -1,7 +1,8 @@
 ---
 /**
- * Bloco 2 — "Sua dor tem nome". A visitante se identifica com o
- * nome do que tem, não com "dor na relação" genérica.
+ * Bloco 2 — "Sua dor tem nome". Chips escaneáveis: quem tem
+ * diagnóstico se reconhece no nome em 2 segundos. A identificação
+ * por sintoma (sem diagnóstico) acontece no bloco anterior (Vozes).
  * FALTA: cliente validar a lista de condições (afirmação de escopo).
  */
 import Secao from './primitivos/Secao.astro';
@@ -13,33 +14,29 @@ import { CONDICOES } from '../data/condicoes';
   <h2 class="mt-2 text-h2">
     Sua dor tem nome — <span class="italic text-brand">e tem caminho</span>
   </h2>
-  <p class="mt-3 max-w-2xl">
-    Nomes diferentes, um ponto em comum: a musculatura pélvica em defesa e um sistema
-    nervoso em alerta. É essa resposta do corpo que o protocolo trabalha.
-  </p>
 
-  <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+  <ul class="mt-7 flex flex-wrap gap-2.5">
     {
       CONDICOES.map((c) => (
-        <li class="rounded-xl border border-line bg-card-alt p-4">
-          <p class="font-bold text-ink">{c.nome}</p>
-          <p class="mt-1 text-fine">{c.frase}</p>
+        <li class="rounded-full border border-line bg-card-alt px-4 py-2 font-semibold text-ink">
+          {c.nome}
         </li>
       ))
     }
-    <li class="rounded-xl border border-brand-hairline bg-brand-wash p-4">
-      <p class="font-bold text-ink">Dor sem nome ainda</p>
-      <p class="mt-1 text-fine">
-        Você não precisa de um diagnóstico fechado para começar a cuidar da resposta do
-        seu corpo.
-      </p>
+    <li class="rounded-full border border-brand-hairline bg-brand-wash px-4 py-2 font-semibold text-brand">
+      Dor ainda sem nome
     </li>
   </ul>
 
+  <p class="mt-6 max-w-2xl">
+    Nomes diferentes, um ponto em comum: a musculatura pélvica em defesa e o sistema
+    nervoso em alerta. É essa resposta do corpo que o protocolo trabalha — com ou sem
+    diagnóstico fechado.
+  </p>
+
   <!-- Desqualificação honesta: aumenta confiança -->
-  <p class="mt-6 max-w-2xl text-fine text-muted">
-    Importante: dor na relação também pode ter causas que precisam de investigação
-    médica. Se a sua dor é recente, intensa ou vem acompanhada de outros sintomas,
-    procure avaliação profissional — este protocolo não substitui esse cuidado.
+  <p class="mt-4 max-w-2xl text-fine text-muted">
+    Dor recente, intensa ou com outros sintomas? Investigue com um profissional antes —
+    este protocolo não substitui avaliação médica.
   </p>
 </Secao>

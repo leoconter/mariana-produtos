@@ -1,16 +1,25 @@
 ---
 /**
- * Bloco 8 — O que muda. Os 5 cards atuais (copy integral) +
- * o parágrafo "Imagine isso" da página atual.
+ * Bloco 8 — O que muda: Antes → Depois. Copy integral do bloco
+ * "Promessa" da página original (os 5 pares) — o conteúdo de
+ * desejo mais escaneável que existe no material. Fecha com o
+ * "Imagine isso" condensado.
  */
 import Secao from './primitivos/Secao.astro';
 
-const cards = [
-  { titulo: 'Alívio e relaxamento pélvico', texto: 'Seu corpo aprende a soltar a tensão acumulada.' },
-  { titulo: 'Prazer sem interrupções', texto: 'Sem ardência cortando o momento.' },
-  { titulo: 'Confiança no próprio corpo', texto: 'Você para de temer a intimidade.' },
-  { titulo: 'Conexão com o parceiro', texto: 'A distância que a dor criou começa a diminuir.' },
-  { titulo: 'Autonomia real', texto: 'Sem depender de soluções paliativas para sempre.' },
+const antes = [
+  'Dor e ardência a cada tentativa',
+  'Corpo travando contra sua vontade',
+  'Medo constante da intimidade',
+  'Evitar e fingir cansaço',
+  'Culpa e vergonha em silêncio',
+];
+const depois = [
+  'Confiança no próprio corpo',
+  'Resposta natural e relaxamento',
+  'Calma e segurança na intimidade',
+  'Desejo e conexão com o parceiro',
+  'Autonomia e autoestima restauradas',
 ];
 ---
 
@@ -20,21 +29,38 @@ const cards = [
     Quando seu corpo <span class="italic text-brand">para de reagir com dor</span>
   </h2>
 
-  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      cards.map((c) => (
-        <div class="rounded-xl border border-line bg-card p-5">
-          <h3 class="text-h3">{c.titulo}</h3>
-          <p class="mt-2 text-fine">{c.texto}</p>
-        </div>
-      ))
-    }
-    <div class="rounded-xl border border-brand-hairline bg-brand-wash p-5">
-      <h3 class="text-h3">Imagine isso</h3>
-      <p class="mt-2 text-fine">
-        Pela primeira vez em muito tempo, em vez de tensão, você sente calma. Seu corpo
-        não trava. Você está presente. Sem dor interrompendo. Sem culpa depois.
-      </p>
+  <div class="mt-8 grid gap-4 sm:grid-cols-2">
+    <div class="rounded-2xl border border-line bg-card-alt p-5 sm:p-6">
+      <p class="eyebrow text-muted">Hoje</p>
+      <ul class="mt-3 space-y-2.5">
+        {
+          antes.map((item) => (
+            <li class="flex items-start gap-2.5 text-body text-muted">
+              <span class="mt-2.5 size-1 shrink-0 rounded-full bg-faint" aria-hidden="true" />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="rounded-2xl border border-brand-line bg-brand-wash p-5 sm:p-6">
+      <p class="eyebrow">Depois dos 21 dias</p>
+      <ul class="mt-3 space-y-2.5">
+        {
+          depois.map((item) => (
+            <li class="flex items-start gap-2.5 text-body font-semibold text-ink">
+              <span class="mt-2.5 size-1 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
+
+  <p class="mt-7 max-w-2xl font-serif text-h3 italic text-ink">
+    Imagine: em vez de tensão, calma. Seu corpo não trava. Você está presente. Sem dor
+    interrompendo. Sem culpa depois.
+  </p>
 </Secao>

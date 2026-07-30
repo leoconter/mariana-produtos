@@ -1,10 +1,9 @@
 ---
 /**
- * Bloco 7 — O que você recebe (novo e crítico): o comprador
- * precisa enxergar o objeto.
- * FALTA: nº de páginas do ebook, nº de exercícios, nº/duração dos
- * vídeos e nome da plataforma de acesso. Preencher os "___" quando
- * o cliente enviar — os cards já têm o espaço reservado.
+ * Bloco 7 — O que você recebe. Checklist: menos moldura, mais
+ * ritmo de leitura. O comprador precisa enxergar o objeto.
+ * FALTA: nº de páginas do ebook, nº/duração dos vídeos e nome da
+ * plataforma de acesso.
  */
 import { Picture } from 'astro:assets';
 import capa from '../assets/capa-ebook.jpg';
@@ -15,69 +14,66 @@ import { OFERTA } from '../data/oferta';
 const entregaveis = [
   {
     titulo: 'Ebook do Método Liberdade Íntima',
-    texto:
-      'O guia completo, passo a passo, baseado na fisioterapia pélvica — para entender, aliviar e transformar a dor na relação.',
+    texto: 'o guia completo, passo a passo, baseado na fisioterapia pélvica.',
     /* FALTA: nº de páginas */
   },
-  {
-    titulo: 'Ritual de 21 dias',
-    texto: 'Missões diárias guiadas de 5 a 10 minutos. Cada dia constrói sobre o anterior.',
-  },
-  {
-    titulo: 'Suporte via WhatsApp',
-    texto: 'Individual e opcional, para tirar dúvidas sobre os exercícios e o protocolo.',
-  },
+  { titulo: 'Ritual de 21 dias', texto: 'missões diárias guiadas de 5 a 10 minutos.' },
+  { titulo: 'Suporte via WhatsApp', texto: 'individual e opcional, para tirar dúvidas.' },
   {
     titulo: 'Vídeos explicativos',
-    texto: 'Para te guiar na jornada inicial e mostrar como aplicar cada exercício.',
+    texto: 'como aplicar cada exercício, desde o primeiro dia.',
     /* FALTA: quantos vídeos, duração */
   },
   {
     titulo: 'Acesso vitalício',
-    texto:
-      'Chega por e-mail em minutos, abre no celular ou computador. Refaça quantas vezes quiser.',
+    texto: 'chega por e-mail, abre no celular. Refaça quando quiser.',
     /* FALTA: nome da plataforma/área de membros */
   },
   {
     /* NOTA: bônus off-thesis, candidato a substituição */
     titulo: 'Bônus: guia da cólica',
-    texto: '5 coisas que estão piorando a sua cólica — e o que fazer sobre cada uma.',
+    texto: '5 coisas que estão piorando a sua cólica.',
   },
 ];
 ---
 
 <Secao fundo="branco">
-  <div class="flex items-start justify-between gap-6">
+  <div class="grid items-start gap-8 sm:grid-cols-[1fr_auto]">
     <div>
       <p class="eyebrow">Material completo</p>
       <h2 class="mt-2 text-h2">
         O que chega para você <span class="italic text-brand">hoje</span>
       </h2>
-      <p class="mt-3 max-w-2xl">
-        Tudo digital, tudo seu, tudo no seu ritmo. É isto que você recebe ao entrar no {OFERTA.nome}:
-      </p>
+
+      <ul class="mt-7 max-w-xl space-y-4">
+        {
+          entregaveis.map((e) => (
+            <li class="flex items-start gap-3">
+              <span
+                aria-hidden="true"
+                class="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-wash text-fine font-bold text-brand"
+              >
+                ✓
+              </span>
+              <p class="text-body">
+                <strong class="text-ink">{e.titulo}</strong> — {e.texto}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
     </div>
+
     <Picture
       src={capa}
-      alt=""
-      width={128}
+      alt={`Capa do ebook ${OFERTA.nome}`}
+      width={280}
       densities={[1, 2]}
       formats={['avif', 'webp']}
       fallbackFormat="jpg"
       loading="lazy"
       decoding="async"
-      class="hidden w-28 -rotate-2 rounded-lg shadow-md sm:block"
+      class="hidden w-36 -rotate-2 rounded-lg shadow-lg shadow-brand-line/60 sm:block sm:w-56"
     />
-  </div>
-
-  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      entregaveis.map((e) => (
-        <div class="rounded-xl border border-line bg-card-alt p-5">
-          <h3 class="text-h3">{e.titulo}</h3>
-          <p class="mt-2 text-fine">{e.texto}</p>
-        </div>
-      ))
-    }
   </div>
 </Secao>
