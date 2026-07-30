@@ -220,7 +220,7 @@
     animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  /* Setas dos CTAs (bounce) */
+  /* Setas dos CTAs (bounce): ↓ rola até a oferta, → vai ao checkout */
   @keyframes arrowRight {
     0%,
     100% {
@@ -232,6 +232,18 @@
   }
   .arrow-right {
     animation: arrowRight 1.1s ease-in-out infinite;
+  }
+  @keyframes arrowDown {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+  }
+  .arrow-down {
+    animation: arrowDown 1.1s ease-in-out infinite;
   }
 
   /* Scroll-reveal (progressive enhancement).

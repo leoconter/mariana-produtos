@@ -1,29 +1,35 @@
 ---
 /**
- * O ÚNICO botão da página. Label e destino vêm de oferta.ts —
- * a regra "mesmo texto de botão em toda a página" é estrutural.
- * `data-checkout` liga o repasse de UTM + InitiateCheckout (script único).
+ * O ÚNICO botão da página. Label vem de oferta.ts — a regra
+ * "mesmo texto de botão em toda a página" é estrutural.
+ * Destino: âncora para a caixa de oferta (#oferta) por padrão;
+ * apenas o botão DENTRO da caixa (checkout=true) vai ao Kirvano —
+ * é nele que `data-checkout` liga UTM + InitiateCheckout.
  */
 import { OFERTA } from '../../data/oferta';
 
 interface Props {
+  /** true = link real para o checkout Kirvano (só na caixa de oferta) */
+  checkout?: boolean;
   /** Mostra a linha "Acesso imediato. Privado. Garantia..." abaixo */
   microcopy?: boolean;
   /** Ocupa a largura toda (caixa de oferta, CTA fixo) */
   bloco?: boolean;
   classe?: string;
 }
-const { microcopy = true, bloco = false, classe = '' } = Astro.props;
+const { checkout = false, microcopy = true, bloco = false, classe = '' } = Astro.props;
 ---
 
 <div class={bloco ? 'w-full' : 'inline-block'}>
   <a
-    href={OFERTA.checkoutUrl}
-    data-checkout
+    href={checkout ? OFERTA.checkoutUrl : '#oferta'}
+    data-checkout={checkout ? '' : undefined}
     class:list={['btn-brand', bloco && 'w-full text-lg', classe]}
   >
     {OFERTA.ctaLabel}
-    <span class="arrow arrow-right" aria-hidden="true">→</span>
+    <span class:list={['arrow', checkout ? 'arrow-right' : 'arrow-down']} aria-hidden="true">
+      {checkout ? '→' : '↓'}
+    </span>
   </a>
   {
     microcopy && (

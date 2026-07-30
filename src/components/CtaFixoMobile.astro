@@ -2,14 +2,15 @@
 /**
  * CTA fixo mobile. Aparece depois do Bloco 3 (marcador
  * #fim-oferta-mini) e some quando a caixa de oferta (#oferta)
- * está visível. Lógica no script único de index.astro.
+ * está visível. Leva à caixa de oferta — o checkout é só lá.
+ * Lógica no script único de index.astro.
  */
 import { OFERTA } from '../data/oferta';
 ---
 
 <div id="cta-fixo" class="border-t border-brand-hairline bg-card px-4 py-3 shadow-2xl">
-  <a href={OFERTA.checkoutUrl} data-checkout class="btn-brand w-full">
+  <a href="#oferta" class="btn-brand w-full">
     {OFERTA.ctaLabel}
-    <span class="arrow arrow-right" aria-hidden="true">→</span>
+    <span class="arrow arrow-down" aria-hidden="true">↓</span>
   </a>
 </div>
