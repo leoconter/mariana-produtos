@@ -10,33 +10,35 @@ import { CONDICOES } from '../data/condicoes';
 ---
 
 <Secao fundo="branco">
-  <p class="eyebrow">Se isso acontece com você</p>
-  <h2 class="mt-2 text-h2">
-    Sua dor tem nome — <span class="italic text-brand">e tem caminho</span>
-  </h2>
+  <div class="lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-start lg:gap-16">
+    <div>
+      <p class="eyebrow">Se isso acontece com você</p>
+      <h2 class="mt-2 text-h2">
+        Sua dor tem nome — <span class="italic text-brand">e tem caminho</span>
+      </h2>
+      <p class="mt-4 max-w-2xl">
+        Nomes diferentes, um ponto em comum: a musculatura pélvica em defesa e o sistema
+        nervoso em alerta. É essa resposta do corpo que o protocolo trabalha — com ou
+        sem diagnóstico fechado.
+      </p>
+      <!-- Desqualificação honesta: aumenta confiança -->
+      <p class="mt-4 max-w-2xl text-fine text-muted">
+        Dor recente, intensa ou com outros sintomas? Investigue com um profissional
+        antes — este protocolo não substitui avaliação médica.
+      </p>
+    </div>
 
-  <ul class="mt-7 flex flex-wrap gap-2.5">
-    {
-      CONDICOES.map((c) => (
-        <li class="rounded-full border border-line bg-card-alt px-4 py-2 font-semibold text-ink">
-          {c.nome}
-        </li>
-      ))
-    }
-    <li class="rounded-full border border-brand-hairline bg-brand-wash px-4 py-2 font-semibold text-brand">
-      Dor ainda sem nome
-    </li>
-  </ul>
-
-  <p class="mt-6 max-w-2xl">
-    Nomes diferentes, um ponto em comum: a musculatura pélvica em defesa e o sistema
-    nervoso em alerta. É essa resposta do corpo que o protocolo trabalha — com ou sem
-    diagnóstico fechado.
-  </p>
-
-  <!-- Desqualificação honesta: aumenta confiança -->
-  <p class="mt-4 max-w-2xl text-fine text-muted">
-    Dor recente, intensa ou com outros sintomas? Investigue com um profissional antes —
-    este protocolo não substitui avaliação médica.
-  </p>
+    <ul class="mt-7 flex flex-wrap content-start gap-2.5 lg:mt-2">
+      {
+        CONDICOES.map((c) => (
+          <li class="rounded-full border border-line bg-card-alt px-4 py-2 font-semibold text-ink">
+            {c.nome}
+          </li>
+        ))
+      }
+      <li class="rounded-full border border-brand-hairline bg-brand-wash px-4 py-2 font-semibold text-brand">
+        Dor ainda sem nome
+      </li>
+    </ul>
+  </div>
 </Secao>

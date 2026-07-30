@@ -17,10 +17,14 @@ const vozes = [
   <div class="mx-auto w-full max-w-5xl px-5 py-14 sm:px-8 sm:py-20">
     <p class="eyebrow text-brand-soft" data-reveal>O que ninguém fala em voz alta</p>
 
-    <div class="mt-8 space-y-8 sm:mt-10 sm:space-y-9">
+    <div class="mt-8 space-y-8 sm:mt-10 sm:space-y-9 lg:grid lg:grid-cols-3 lg:gap-12 lg:space-y-0">
       {
         vozes.map((v, i) => (
-          <blockquote data-reveal style={`--d:${i * 120}ms`}>
+          <blockquote
+            data-reveal
+            style={`--d:${i * 120}ms`}
+            class="lg:border-l lg:border-surface/15 lg:pl-6"
+          >
             <p class="font-serif text-h2 italic text-surface">{v.fala}</p>
             <p class="mt-1.5 text-fine text-faint">{v.eco}</p>
           </blockquote>
@@ -28,7 +32,7 @@ const vozes = [
       }
     </div>
 
-    <p class="mt-10 max-w-md text-body text-surface/80" data-reveal style="--d:360ms">
+    <p class="mt-10 max-w-md text-body text-surface/80 lg:mt-14" data-reveal style="--d:360ms">
       Isso é mais comum do que você imagina. Não é frescura — e não é um problema só
       seu.
     </p>

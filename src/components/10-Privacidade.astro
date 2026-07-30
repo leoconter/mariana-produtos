@@ -15,23 +15,26 @@ const garantias = [
 ---
 
 <Secao fundo="wash">
-  <p class="eyebrow">Privacidade</p>
-  <h2 class="mt-2 text-h2">
-    Ninguém precisa saber — <span class="italic text-brand">nem vai</span>
-  </h2>
+  <div class="lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-start lg:gap-16">
+    <div>
+      <p class="eyebrow">Privacidade</p>
+      <h2 class="mt-2 text-h2">
+        Ninguém precisa saber — <span class="italic text-brand">nem vai</span>
+      </h2>
+      <p class="mt-4 max-w-xl text-fine text-muted">
+        Esse assunto é seu. O protocolo foi desenhado para você começar e concluir sem
+        se expor a ninguém.
+      </p>
+    </div>
 
-  <ul class="mt-7 max-w-xl space-y-3.5">
-    {
-      garantias.map((g) => (
-        <li class="border-l-2 border-brand-line pl-4 text-body">
-          <strong class="text-ink">{g.lead}:</strong> {g.texto}
-        </li>
-      ))
-    }
-  </ul>
-
-  <p class="mt-6 max-w-xl text-fine text-muted">
-    Esse assunto é seu. O protocolo foi desenhado para você começar e concluir sem se
-    expor a ninguém.
-  </p>
+    <ul class="mt-7 max-w-xl space-y-3.5 lg:mt-2">
+      {
+        garantias.map((g) => (
+          <li class="border-l-2 border-brand-line pl-4 text-body">
+            <strong class="text-ink">{g.lead}:</strong> {g.texto}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </Secao>

@@ -19,64 +19,81 @@ import { OFERTA } from '../data/oferta';
   >
   </div>
 
-  <div class="relative mx-auto w-full max-w-5xl px-5 pt-6 pb-10 sm:px-8 sm:pt-10 sm:pb-14">
-    <!-- Marca rebaixada: só o wordmark -->
-    <p class="anim-rise text-fine font-bold text-ink">
-      Liberdade <span class="text-brand">Íntima</span>
-    </p>
-
-    <!-- Linha de abertura: reconhecimento antes da promessa -->
-    <p class="anim-rise mt-4 font-serif text-h3 font-medium text-ink" style="animation-delay: 0.06s;">
-      Você não está quebrada. Seu corpo está em defesa.
-    </p>
-
-    <h1 class="anim-rise mt-2 max-w-3xl text-h1" style="animation-delay: 0.12s;">
-      Reduza a dor, a ardência e o travamento na relação <span class="italic text-brand">em até 21 dias</span>
-    </h1>
-
-    <p class="anim-rise mt-2 text-fine text-muted" style="animation-delay: 0.16s;">
-      por {OFERTA.autora} · fisioterapeuta pélvica
-    </p>
-
-    <div class="anim-rise mt-3" style="animation-delay: 0.2s;">
-      <!-- Recorte pequeno do mockup: não compete com o H1 pelo espaço vertical -->
-      <Picture
-        src={capa}
-        alt={`Capa do ebook ${OFERTA.nome}`}
-        width={200}
-        densities={[1, 2]}
-        formats={['avif', 'webp']}
-        fallbackFormat="jpg"
-        loading="eager"
-        fetchpriority="high"
-        class="float-right mb-2 ml-3 w-14 rotate-2 rounded-lg shadow-lg shadow-brand-line/60 min-[360px]:w-20 min-[360px]:ml-4 sm:ml-8 sm:w-40"
-      />
-
-      <p class="max-w-xl text-body-lg">
-        Para mulheres que sentem o corpo travar na intimidade — um protocolo prático,
-        baseado em neurociência, 100% em casa.
+  <div
+    class="relative mx-auto grid w-full max-w-5xl px-5 pt-6 pb-10 sm:px-8 sm:pt-10 sm:pb-14 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-20 lg:pt-16 lg:pb-20"
+  >
+    <div>
+      <!-- Marca rebaixada: só o wordmark -->
+      <p class="anim-rise text-fine font-bold text-ink">
+        Liberdade <span class="text-brand">Íntima</span>
       </p>
 
-      <ul class="mt-5 flex max-w-xl flex-wrap gap-x-5 gap-y-2 text-fine font-semibold text-body">
-        <li class="flex items-center gap-1.5">
-          <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
-          Sem medicamentos
-        </li>
-        <li class="flex items-center gap-1.5">
-          <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
-          5 a 10 minutos por dia
-        </li>
-        <li class="flex items-center gap-1.5">
-          <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
-          Sem exposição
-        </li>
-      </ul>
+      <!-- Linha de abertura: reconhecimento antes da promessa -->
+      <p class="anim-rise mt-4 font-serif text-h3 font-medium text-ink" style="animation-delay: 0.06s;">
+        Você não está quebrada. Seu corpo está em defesa.
+      </p>
 
-      <div class="mt-6">
-        <Cta microcopy={false} />
-        <p class="mt-2.5 text-fine font-semibold text-body">{OFERTA.provaSocial}</p>
-        <p class="text-fine text-muted">{OFERTA.microcopy}</p>
+      <h1 class="anim-rise mt-2 max-w-3xl text-h1" style="animation-delay: 0.12s;">
+        Reduza a dor, a ardência e o travamento na relação <span class="italic text-brand">em até 21 dias</span>
+      </h1>
+
+      <p class="anim-rise mt-2 text-fine text-muted" style="animation-delay: 0.16s;">
+        por {OFERTA.autora} · fisioterapeuta pélvica
+      </p>
+
+      <div class="anim-rise mt-3" style="animation-delay: 0.2s;">
+        <!-- Mobile: recorte pequeno flutuando ao lado do texto -->
+        <Picture
+          src={capa}
+          alt={`Capa do ebook ${OFERTA.nome}`}
+          width={200}
+          densities={[1, 2]}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpg"
+          loading="eager"
+          fetchpriority="high"
+          class="float-right mb-2 ml-3 w-14 rotate-2 rounded-lg shadow-lg shadow-brand-line/60 min-[360px]:w-20 min-[360px]:ml-4 sm:ml-8 sm:w-40 lg:hidden"
+        />
+
+        <p class="max-w-xl text-body-lg">
+          Para mulheres que sentem o corpo travar na intimidade — um protocolo prático,
+          baseado em neurociência, 100% em casa.
+        </p>
+
+        <ul class="mt-5 flex max-w-xl flex-wrap gap-x-5 gap-y-2 text-fine font-semibold text-body">
+          <li class="flex items-center gap-1.5">
+            <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
+            Sem medicamentos
+          </li>
+          <li class="flex items-center gap-1.5">
+            <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
+            5 a 10 minutos por dia
+          </li>
+          <li class="flex items-center gap-1.5">
+            <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
+            Sem exposição
+          </li>
+        </ul>
+
+        <div class="mt-6">
+          <Cta microcopy={false} />
+          <p class="mt-2.5 text-fine font-semibold text-body">{OFERTA.provaSocial}</p>
+          <p class="text-fine text-muted">{OFERTA.microcopy}</p>
+        </div>
       </div>
     </div>
+
+    <!-- Desktop: capa maior, coluna própria, sem vão morto -->
+    <Picture
+      src={capa}
+      alt=""
+      width={288}
+      densities={[1, 2]}
+      formats={['avif', 'webp']}
+      fallbackFormat="jpg"
+      loading="eager"
+      class="anim-rise hidden w-72 rotate-2 rounded-xl shadow-xl shadow-brand-line/60 lg:block"
+      style="animation-delay: 0.26s;"
+    />
   </div>
 </header>
