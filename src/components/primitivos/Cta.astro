@@ -20,13 +20,10 @@ const { microcopy = true, bloco = false, classe = '' } = Astro.props;
   <a
     href={OFERTA.checkoutUrl}
     data-checkout
-    class:list={[
-      'inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-8 py-4 text-center font-bold text-white transition-colors hover:bg-brand-deep active:bg-brand-darker',
-      bloco && 'w-full text-lg',
-      classe,
-    ]}
+    class:list={['btn-brand', bloco && 'w-full text-lg', classe]}
   >
     {OFERTA.ctaLabel}
+    <span class="arrow arrow-right" aria-hidden="true">→</span>
   </a>
   {
     microcopy && (

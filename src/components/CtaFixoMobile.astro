@@ -8,11 +8,8 @@ import { OFERTA } from '../data/oferta';
 ---
 
 <div id="cta-fixo" class="border-t border-brand-hairline bg-card px-4 py-3 shadow-2xl">
-  <a
-    href={OFERTA.checkoutUrl}
-    data-checkout
-    class="flex items-center justify-center rounded-xl bg-brand px-6 py-3.5 font-bold text-white transition-colors hover:bg-brand-deep active:bg-brand-darker"
-  >
+  <a href={OFERTA.checkoutUrl} data-checkout class="btn-brand w-full">
     {OFERTA.ctaLabel}
+    <span class="arrow arrow-right" aria-hidden="true">→</span>
   </a>
 </div>

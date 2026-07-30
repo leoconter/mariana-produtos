@@ -7,8 +7,10 @@ interface Props {
   fundo?: 'surface' | 'branco' | 'wash';
   id?: string;
   classe?: string;
+  /** Scroll-reveal (padrão fisio). Desligar em blocos sensíveis. */
+  reveal?: boolean;
 }
-const { fundo = 'surface', id, classe = '' } = Astro.props;
+const { fundo = 'surface', id, classe = '', reveal = true } = Astro.props;
 const fundos = {
   surface: 'bg-surface',
   branco: 'bg-card',
@@ -17,7 +19,7 @@ const fundos = {
 ---
 
 <section id={id} class:list={[fundos[fundo], 'py-14 sm:py-20', classe]}>
-  <div class="mx-auto w-full max-w-5xl px-5 sm:px-8">
+  <div class="mx-auto w-full max-w-5xl px-5 sm:px-8" data-reveal={reveal ? '' : undefined}>
     <slot />
   </div>
 </section>

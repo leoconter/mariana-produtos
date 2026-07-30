@@ -86,6 +86,28 @@ import { OFERTA } from '../data/oferta';
       var passouMarco = false;
       var viuOferta = false;
 
+      // Scroll-reveal (padrão fisio): progressivo, respeita reduced-motion
+      if (
+        !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        'IntersectionObserver' in window
+      ) {
+        document.documentElement.classList.add('reveal-ready');
+        var rio = new IntersectionObserver(
+          function (es) {
+            es.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-in');
+                rio.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.06 }
+        );
+        document.querySelectorAll('[data-reveal]').forEach(function (el) {
+          rio.observe(el);
+        });
+      }
+
       var io = new IntersectionObserver(function (entradas) {
         entradas.forEach(function (en) {
           if (en.target === oferta) {
