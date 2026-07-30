@@ -1,0 +1,30 @@
+---
+/**
+ * Bloco 16 — Rodapé legal.
+ * FALTA: CNPJ / razão social, contato de suporte, URL da política
+ * de privacidade e dos termos de uso. Nada disso existe na página
+ * atual nem foi fornecido. Os slots estão prontos abaixo.
+ */
+import { OFERTA } from '../data/oferta';
+---
+
+<footer class="border-t border-line bg-footer py-10">
+  <div class="mx-auto w-full max-w-5xl px-5 text-center sm:px-8">
+    <p class="font-bold text-ink">
+      Liberdade <span class="text-brand">Íntima</span>
+    </p>
+    <p class="mt-1 text-fine text-muted">
+      Por {OFERTA.autora} — {OFERTA.credencial}
+    </p>
+
+    <p class="mx-auto mt-4 max-w-lg text-fine text-muted">
+      Este produto é um material educativo e não substitui avaliação médica ou
+      fisioterapêutica individual. Resultados podem variar. Consulte um profissional de
+      saúde se tiver condições médicas pré-existentes. Todos os direitos reservados.
+    </p>
+
+    <!-- FALTA: CNPJ e razão social -->
+    <!-- FALTA: e-mail/WhatsApp de suporte -->
+    <!-- FALTA: links para política de privacidade e termos de uso -->
+  </div>
+</footer>

@@ -1,0 +1,23 @@
+---
+/**
+ * Wrapper de bloco: fundo, ritmo vertical e largura de leitura
+ * consistentes. Variantes de fundo = as 3 superfícies da página atual.
+ */
+interface Props {
+  fundo?: 'surface' | 'branco' | 'wash';
+  id?: string;
+  classe?: string;
+}
+const { fundo = 'surface', id, classe = '' } = Astro.props;
+const fundos = {
+  surface: 'bg-surface',
+  branco: 'bg-card',
+  wash: 'bg-brand-wash',
+};
+---
+
+<section id={id} class:list={[fundos[fundo], 'py-14 sm:py-20', classe]}>
+  <div class="mx-auto w-full max-w-5xl px-5 sm:px-8">
+    <slot />
+  </div>
+</section>

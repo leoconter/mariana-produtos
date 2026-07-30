@@ -1,0 +1,45 @@
+---
+/**
+ * Bloco 4 — O ciclo que fecha o corpo.
+ * Copy integral do bloco "Consequência silenciosa" atual,
+ * apresentada como ciclo que se retroalimenta.
+ */
+import Secao from './primitivos/Secao.astro';
+
+const passos = [
+  'A tensão muscular aumenta a cada tentativa frustrada',
+  'O medo se instala e vira resposta automática do corpo',
+  'Você começa a evitar a intimidade, e a culpa cresce',
+  'A distância do parceiro(a) se torna inevitável',
+  'A autoestima desmorona em silêncio',
+  'O desejo some, não porque você não quer, mas porque a dor venceu',
+];
+---
+
+<Secao fundo="wash">
+  <p class="eyebrow">Consequência silenciosa</p>
+  <h2 class="mt-2 text-h2">
+    Cada tentativa frustrada treina seu corpo a fechar <span class="text-brand">mais</span>
+  </h2>
+  <p class="mt-3 max-w-2xl">
+    Quando você ignora o sinal do corpo e tenta novamente sem entender o que está
+    acontecendo, o ciclo se fortalece. O sistema nervoso interpreta a tentativa como
+    ameaça e responde com mais rigidez.
+  </p>
+
+  <ol class="mt-8 grid gap-3 sm:grid-cols-2">
+    {
+      passos.map((p, i) => (
+        <li class="flex items-start gap-3 rounded-xl border border-brand-hairline bg-card p-4">
+          <span class="font-bold text-brand">{String(i + 1).padStart(2, '0')}</span>
+          <span class="text-body">{p}</span>
+        </li>
+      ))
+    }
+  </ol>
+
+  <p class="mt-6 max-w-2xl font-semibold text-ink">
+    E o ciclo recomeça — um pouco mais forte a cada volta. O que está em jogo não é só a
+    relação. É sua autoestima.
+  </p>
+</Secao>

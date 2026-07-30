@@ -1,0 +1,40 @@
+---
+/**
+ * Bloco 8 — O que muda. Os 5 cards atuais (copy integral) +
+ * o parágrafo "Imagine isso" da página atual.
+ */
+import Secao from './primitivos/Secao.astro';
+
+const cards = [
+  { titulo: 'Alívio e relaxamento pélvico', texto: 'Seu corpo aprende a soltar a tensão acumulada.' },
+  { titulo: 'Prazer sem interrupções', texto: 'Sem ardência cortando o momento.' },
+  { titulo: 'Confiança no próprio corpo', texto: 'Você para de temer a intimidade.' },
+  { titulo: 'Conexão com o parceiro', texto: 'A distância que a dor criou começa a diminuir.' },
+  { titulo: 'Autonomia real', texto: 'Sem depender de soluções paliativas para sempre.' },
+];
+---
+
+<Secao fundo="surface">
+  <p class="eyebrow">O que muda</p>
+  <h2 class="mt-2 text-h2">
+    Quando seu corpo <span class="text-brand">para de reagir com dor</span>
+  </h2>
+
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      cards.map((c) => (
+        <div class="rounded-xl border border-line bg-card p-5">
+          <h3 class="text-h3">{c.titulo}</h3>
+          <p class="mt-2 text-fine">{c.texto}</p>
+        </div>
+      ))
+    }
+    <div class="rounded-xl border border-brand-hairline bg-brand-wash p-5">
+      <h3 class="text-h3">Imagine isso</h3>
+      <p class="mt-2 text-fine">
+        Pela primeira vez em muito tempo, em vez de tensão, você sente calma. Seu corpo
+        não trava. Você está presente. Sem dor interrompendo. Sem culpa depois.
+      </p>
+    </div>
+  </div>
+</Secao>

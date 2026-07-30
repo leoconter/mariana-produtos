@@ -1,0 +1,74 @@
+---
+/**
+ * Bloco 13 — Quem é a Dra. Mariana. Copy integral da página atual
+ * + CREFITO (recuperado da capa do ebook; não existia na LP).
+ */
+import { Picture } from 'astro:assets';
+import mariana from '../assets/mariana.jpg';
+import Secao from './primitivos/Secao.astro';
+import Cta from './primitivos/Cta.astro';
+
+const credenciais = [
+  '10 anos formada em Fisioterapia',
+  'Pós em Fisioterapia Pélvica e Uroginecologia Funcional',
+  'Mestrado em Ciências da Reabilitação (UFCSPA)',
+  'Doutoranda em Ciências da Reabilitação (UFCSPA)',
+  'Professora de pós-graduação (Faculdade Inspirar)',
+  'Palestrante em congressos nacionais e internacionais',
+  '5 anos de consultório particular em fisioterapia pélvica',
+];
+---
+
+<Secao fundo="surface">
+  <div class="grid items-start gap-10 sm:grid-cols-[minmax(0,320px)_1fr]">
+    <div class="relative mx-auto w-full max-w-xs">
+      <Picture
+        src={mariana}
+        alt="Dra. Mariana Della Valentina, fisioterapeuta pélvica"
+        width={640}
+        densities={[1, 2]}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        loading="lazy"
+        decoding="async"
+        class="w-full rounded-2xl object-cover"
+      />
+      <p class="absolute -bottom-3 left-1/2 w-max -translate-x-1/2 rounded-full bg-brand px-4 py-1.5 text-fine font-bold text-white">
+        Fisioterapeuta Pélvica · CREFITO 213.111-F
+      </p>
+    </div>
+
+    <div>
+      <p class="eyebrow">Sua guia neste processo</p>
+      <h2 class="mt-2 text-h2">
+        Dra. Mariana <span class="text-brand">Della Valentina</span>
+      </h2>
+      <p class="mt-3">
+        Fisioterapeuta pélvica especialista com mais de uma década de formação e
+        experiência clínica. Criou o método Liberdade Íntima para levar para mais
+        mulheres o que antes ficava restrito ao consultório: conhecimento prático,
+        baseado em ciência, para devolver prazer e confiança.
+      </p>
+
+      <ul class="mt-5 space-y-2">
+        {
+          credenciais.map((c) => (
+            <li class="flex items-start gap-2.5 text-body">
+              <span class="mt-2 size-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+              {c}
+            </li>
+          ))
+        }
+      </ul>
+
+      <blockquote class="mt-6 rounded-xl border border-line bg-card p-5 italic text-body">
+        "Minha missão é devolver prazer e confiança para mulheres que acham que não têm
+        solução. Com ciência e prática, eu sei que é possível."
+      </blockquote>
+
+      <div class="mt-6">
+        <Cta />
+      </div>
+    </div>
+  </div>
+</Secao>

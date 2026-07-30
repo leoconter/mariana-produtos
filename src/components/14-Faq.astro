@@ -1,0 +1,31 @@
+---
+/**
+ * Bloco 14 — Perguntas frequentes. <details>/<summary> nativos,
+ * estilizados em CSS. Zero JS.
+ */
+import Secao from './primitivos/Secao.astro';
+import { FAQ } from '../data/faq';
+---
+
+<Secao fundo="branco">
+  <h2 class="text-h2 text-center">
+    Perguntas <span class="text-brand">frequentes</span>
+  </h2>
+
+  <div class="mx-auto mt-8 max-w-2xl space-y-3">
+    {
+      FAQ.map((item) => (
+        <details class="faq-item">
+          <summary>{item.q}</summary>
+          <p class="px-5 pb-5 text-body">{item.a}</p>
+        </details>
+      ))
+    }
+  </div>
+
+  <p class="mx-auto mt-8 max-w-2xl rounded-xl border border-line bg-card-alt p-5 text-center text-fine text-muted">
+    Conteúdo educativo. Não substitui avaliação individual com profissional de saúde. Se
+    você tem condições médicas diagnosticadas, consulte seu médico antes de iniciar
+    qualquer protocolo.
+  </p>
+</Secao>

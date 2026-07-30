@@ -1,0 +1,60 @@
+/* ============================================================
+   TOKENS — Liberdade Íntima
+   Única fonte de cor e tipografia. Nenhum hex no markup.
+   Valores extraídos das classes Tailwind em uso na página
+   Base44 atual (ver referencia/copy-atual-recuperada.md §2).
+   ============================================================ */
+
+@theme {
+  /* ---- Tipografia ----
+     Decisão: stack de sistema (a página atual não carrega fonte
+     nenhuma — não há identidade tipográfica a preservar; 0 KB). */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+
+  /* Escala mobile-first. Corpo ≥17px (exigência do brief).
+     H1/H2 com clamp: responsivo sem classes extras. */
+  --text-eyebrow: 0.75rem; /* 12px */
+  --text-eyebrow--line-height: 1.3;
+  --text-eyebrow--letter-spacing: 0.12em;
+  --text-fine: 0.875rem; /* 14px — letra fina, selos */
+  --text-fine--line-height: 1.45;
+  --text-body: 1.0625rem; /* 17px */
+  --text-body--line-height: 1.6;
+  --text-body-lg: 1.1875rem; /* 19px — subheadline */
+  --text-body-lg--line-height: 1.55;
+  --text-h3: 1.25rem; /* 20px — título de card */
+  --text-h3--line-height: 1.3;
+  --text-h2: clamp(1.6875rem, 4vw + 0.5rem, 2.125rem); /* 27→34px */
+  --text-h2--line-height: 1.2;
+  --text-h1: clamp(2rem, 6vw + 0.5rem, 2.875rem); /* 32→46px */
+  --text-h1--line-height: 1.12;
+  --text-price: clamp(2.75rem, 8vw, 3.25rem); /* 44→52px */
+  --text-price--line-height: 1;
+
+  /* ---- Cor: marca (crimson / rosa — rose-*) ---- */
+  --color-brand: #e11d48; /* acento de título, botões */
+  --color-brand-deep: #be123c; /* hover */
+  --color-brand-darker: #9f1239; /* active */
+  --color-brand-mid: #f43f5e; /* ícones */
+  --color-brand-soft: #fb7185; /* bullets */
+  --color-brand-line: #fecdd3; /* bordas fortes */
+  --color-brand-hairline: #ffe4e6; /* bordas suaves */
+  --color-brand-wash: #fff1f2; /* fundo dos blocos rosa */
+
+  /* ---- Cor: superfícies (off-white quente) ---- */
+  --color-surface: #fdf6f0; /* fundo geral */
+  --color-card: #ffffff;
+  --color-card-alt: #fafaf9; /* stone-50 */
+  --color-footer: #f5f5f4; /* stone-100 */
+
+  /* ---- Cor: texto e linhas (stone) ---- */
+  --color-ink: #1c1917; /* títulos */
+  --color-ink-soft: #292524;
+  --color-body: #44403c; /* corpo forte */
+  --color-body-muted: #57534e; /* corpo padrão */
+  --color-muted: #78716c; /* secundário — piso AA sobre surface */
+  --color-faint: #a8a29e; /* só ≥18px semibold (2,4:1 em corpo) */
+  --color-line: #e7e5e4; /* divisores */
+  --color-line-soft: #f5f5f4;
+}

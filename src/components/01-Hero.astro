@@ -1,0 +1,65 @@
+---
+/**
+ * Bloco 1 — Hero. Máx ~600px de altura no mobile: precisa caber
+ * no in-app browser do Instagram sem scroll.
+ * H1 = promessa + prazo (copy da subheadline atual, promovida).
+ */
+import { Picture } from 'astro:assets';
+import capa from '../assets/capa-ebook.jpg';
+import Cta from './primitivos/Cta.astro';
+import { OFERTA } from '../data/oferta';
+---
+
+<header class="bg-surface">
+  <div class="mx-auto w-full max-w-5xl px-5 pt-6 pb-10 sm:px-8 sm:pt-10 sm:pb-14">
+    <p class="text-fine font-bold text-ink">
+      Liberdade <span class="text-brand">Íntima</span>
+      <span class="font-normal text-muted"> · por {OFERTA.autora}</span>
+    </p>
+
+    <h1 class="mt-4 max-w-3xl text-h1">
+      Reduza a dor, a ardência e o travamento na relação <span class="text-brand">em até 21 dias</span>
+    </h1>
+
+    <div class="mt-3">
+      <!-- Recorte pequeno do mockup: não compete com o H1 pelo espaço vertical -->
+      <Picture
+        src={capa}
+        alt={`Capa do ebook ${OFERTA.nome}`}
+        width={200}
+        densities={[1, 2]}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        loading="eager"
+        fetchpriority="high"
+        class="float-right mb-2 ml-4 w-20 rotate-2 rounded-lg shadow-lg shadow-brand-line/60 sm:w-40 sm:ml-8"
+      />
+
+      <p class="max-w-xl text-body-lg">
+        Um protocolo prático de fisioterapia pélvica, baseado em neurociência, para
+        mulheres que sentem o corpo travar na intimidade.
+      </p>
+
+      <ul class="mt-5 flex max-w-xl flex-wrap gap-x-5 gap-y-2 text-fine font-semibold text-body">
+        <li class="flex items-center gap-1.5">
+          <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
+          Sem medicamentos
+        </li>
+        <li class="flex items-center gap-1.5">
+          <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
+          5 a 10 minutos por dia
+        </li>
+        <li class="flex items-center gap-1.5">
+          <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
+          Sem exposição — 100% em casa
+        </li>
+      </ul>
+
+      <div class="mt-6">
+        <Cta microcopy={false} />
+        <p class="mt-2.5 text-fine font-semibold text-body">{OFERTA.provaSocial}</p>
+        <p class="text-fine text-muted">{OFERTA.microcopy}</p>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,103 @@
+---
+/**
+ * LP Liberdade Íntima — 16 blocos, ordem do brief.
+ * Preço revelado no bloco 3 (a página antiga revelava no 13).
+ * Todo o JS da página está no <script is:inline> ao final.
+ */
+import Base from '../layouts/Base.astro';
+import Hero from '../components/01-Hero.astro';
+import DorTemNome from '../components/02-DorTemNome.astro';
+import OfertaMini from '../components/03-OfertaMini.astro';
+import CicloDaDor from '../components/04-CicloDaDor.astro';
+import Mecanismo from '../components/05-Mecanismo.astro';
+import ComoFunciona from '../components/06-ComoFunciona.astro';
+import OQueVoceRecebe from '../components/07-OQueVoceRecebe.astro';
+import OQueMuda from '../components/08-OQueMuda.astro';
+import ProvaSocial from '../components/09-ProvaSocial.astro';
+import Privacidade from '../components/10-Privacidade.astro';
+import CaixaDeOferta from '../components/11-CaixaDeOferta.astro';
+import Garantia from '../components/12-Garantia.astro';
+import Especialista from '../components/13-Especialista.astro';
+import Faq from '../components/14-Faq.astro';
+import UltimaChamada from '../components/15-UltimaChamada.astro';
+import Rodape from '../components/16-Rodape.astro';
+import CtaFixoMobile from '../components/CtaFixoMobile.astro';
+import { OFERTA } from '../data/oferta';
+---
+
+<Base>
+  <main>
+    <Hero />
+    <DorTemNome />
+    <OfertaMini />
+    <CicloDaDor />
+    <Mecanismo />
+    <ComoFunciona />
+    <OQueVoceRecebe />
+    <OQueMuda />
+    <ProvaSocial />
+    <Privacidade />
+    <CaixaDeOferta />
+    <Garantia />
+    <Especialista />
+    <Faq />
+    <UltimaChamada />
+  </main>
+  <Rodape />
+  <CtaFixoMobile />
+
+  <!--
+    Todo o JS da página (~1KB):
+    1. Repasse de UTM: query string da LP anexada ao link Kirvano no clique
+    2. InitiateCheckout antes do redirect
+    3. ViewOffer quando a caixa de oferta entra no viewport
+    4. CTA fixo mobile: mostra após o bloco 3, esconde sobre a caixa
+  -->
+  <script is:inline define:vars={{ nome: OFERTA.nome, valor: OFERTA.preco }}>
+    (function () {
+      var qs = location.search;
+
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[data-checkout]') : null;
+        if (!a) return;
+        if (qs.length > 1) {
+          try {
+            var u = new URL(a.href);
+            new URLSearchParams(qs).forEach(function (v, k) {
+              u.searchParams.set(k, v);
+            });
+            a.href = u.toString();
+          } catch (_) {}
+        }
+        if (window.fbq)
+          fbq('track', 'InitiateCheckout', { content_name: nome, value: valor, currency: 'BRL' });
+      });
+
+      var barra = document.getElementById('cta-fixo');
+      var oferta = document.getElementById('oferta');
+      var marco = document.getElementById('fim-oferta-mini');
+      if (!barra || !oferta || !marco || !('IntersectionObserver' in window)) return;
+
+      var naOferta = false;
+      var passouMarco = false;
+      var viuOferta = false;
+
+      var io = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (en) {
+          if (en.target === oferta) {
+            naOferta = en.isIntersecting;
+            if (en.isIntersecting && !viuOferta) {
+              viuOferta = true;
+              if (window.fbq) fbq('trackCustom', 'ViewOffer');
+            }
+          } else {
+            passouMarco = !en.isIntersecting && en.boundingClientRect.top < 0;
+          }
+        });
+        barra.classList.toggle('visivel', passouMarco && !naOferta);
+      });
+      io.observe(oferta);
+      io.observe(marco);
+    })();
+  </script>
+</Base>

@@ -1,0 +1,36 @@
+---
+/**
+ * O ÚNICO botão da página. Label e destino vêm de oferta.ts —
+ * a regra "mesmo texto de botão em toda a página" é estrutural.
+ * `data-checkout` liga o repasse de UTM + InitiateCheckout (script único).
+ */
+import { OFERTA } from '../../data/oferta';
+
+interface Props {
+  /** Mostra a linha "Acesso imediato. Privado. Garantia..." abaixo */
+  microcopy?: boolean;
+  /** Ocupa a largura toda (caixa de oferta, CTA fixo) */
+  bloco?: boolean;
+  classe?: string;
+}
+const { microcopy = true, bloco = false, classe = '' } = Astro.props;
+---
+
+<div class={bloco ? 'w-full' : 'inline-block'}>
+  <a
+    href={OFERTA.checkoutUrl}
+    data-checkout
+    class:list={[
+      'inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-8 py-4 text-center font-bold text-white transition-colors hover:bg-brand-deep active:bg-brand-darker',
+      bloco && 'w-full text-lg',
+      classe,
+    ]}
+  >
+    {OFERTA.ctaLabel}
+  </a>
+  {
+    microcopy && (
+      <p class="mt-2 text-fine text-muted" set:text={OFERTA.microcopy} />
+    )
+  }
+</div>

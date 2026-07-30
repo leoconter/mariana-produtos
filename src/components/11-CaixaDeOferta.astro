@@ -1,0 +1,89 @@
+---
+/**
+ * Bloco 11 — Caixa de oferta principal. O ponto de conversão.
+ * Ordem exigida pelo brief: incluídos → preço com ancoragem →
+ * garantia DENTRO da caixa → CTA → selos → linha de privacidade.
+ * O id="oferta" liga o ViewOffer + esconde o CTA fixo (script único).
+ *
+ * FALTA: screenshot do checkout Kirvano para espelhar cores/nome/preço.
+ * FALTA: confirmar Pix e bandeiras aceitas (Kirvano).
+ * FALTA: decisão sobre o badge "3 produtos pelo preço de 1" — o
+ *        "Adeus Corrimento" aparece no badge da página atual mas não
+ *        está na lista de incluídos; omitido até confirmação.
+ */
+import Secao from './primitivos/Secao.astro';
+import Cta from './primitivos/Cta.astro';
+import { OFERTA } from '../data/oferta';
+---
+
+<Secao fundo="wash" id="oferta">
+  <div class="mx-auto max-w-xl overflow-hidden rounded-2xl bg-card shadow-xl shadow-brand-line/40">
+    <!-- Cabeçalho: mesmo nome e preço que a visitante verá no Kirvano -->
+    <div class="bg-brand px-6 py-7 text-center">
+      <h2 class="text-h3 font-bold text-white">
+        Acesso imediato ao {OFERTA.nome}
+      </h2>
+      <p class="mt-1 text-fine text-white/85">
+        Protocolo digital de 21 dias · por {OFERTA.autora}
+      </p>
+    </div>
+
+    <div class="p-6 sm:p-8">
+      <!-- 1. O que está incluso -->
+      <p class="eyebrow">O que está incluído</p>
+      <ul class="mt-3 space-y-2">
+        {
+          OFERTA.incluidos.map((item) => (
+            <li class="flex items-start gap-2.5 text-body">
+              <span
+                aria-hidden="true"
+                class="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-wash text-fine font-bold text-brand"
+              >
+                ✓
+              </span>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- 2. Preço com ancoragem -->
+      <div class="mt-7 text-center">
+        <p class="text-fine text-muted">de <s>{OFERTA.ancoragemFmt}</s> por</p>
+        <p class="text-price font-bold text-brand">{OFERTA.precoFmt}</p>
+        <p class="mt-1 text-fine text-muted">ou {OFERTA.parcelasFmt}</p>
+      </div>
+
+      <!-- 3. Garantia DENTRO da caixa -->
+      <div class="mt-6 rounded-xl border border-brand-hairline bg-brand-wash p-4 text-center">
+        <p class="font-bold text-ink">Garantia de {OFERTA.garantiaDias} dias</p>
+        <p class="mt-1 text-fine">
+          Teste os primeiros exercícios. Se não fizer sentido para você, é só pedir o
+          reembolso — sem burocracia, 100% do valor devolvido.
+        </p>
+      </div>
+
+      <!-- 4. CTA em primeira pessoa -->
+      <div class="mt-6">
+        <Cta bloco microcopy={false} />
+        <p class="mt-2 text-center text-fine text-muted">
+          Acesso liberado imediatamente após a confirmação do pagamento.
+        </p>
+      </div>
+
+      <!-- 5. Selos de segurança -->
+      <ul class="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 border-t border-line pt-5 text-fine text-muted">
+        <li>🔒 Pagamento seguro</li>
+        <li>✓ Garantia de {OFERTA.garantiaDias} dias</li>
+        <li>∞ Acesso vitalício</li>
+        <!-- FALTA: bandeiras aceitas + menção a Pix (confirmar no Kirvano) -->
+      </ul>
+
+      <!-- 6. Reforço de privacidade -->
+      <p class="mt-4 text-center text-fine text-muted">
+        Compra 100% discreta — na fatura aparece um nome neutro, sem referência ao
+        conteúdo.
+      </p>
+    </div>
+  </div>
+</Secao>

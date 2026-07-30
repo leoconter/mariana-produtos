@@ -1,0 +1,46 @@
+---
+/**
+ * Bloco 12 — Garantia expandida em linguagem humana.
+ * Copy integral da página atual.
+ * FALTA: decisão do cliente sobre 30 dias ("teste o protocolo
+ * inteiro") — 7 dias para um protocolo de 21 é a contradição que
+ * o brief aponta. Mantido 7 até autorização.
+ */
+import Secao from './primitivos/Secao.astro';
+import { OFERTA } from '../data/oferta';
+
+const pontos = [
+  'Sem burocracia, sem perguntas invasivas',
+  'Sem justificativa necessária',
+  'Reembolso total, 100% do valor devolvido',
+];
+---
+
+<Secao fundo="branco">
+  <div class="mx-auto max-w-2xl rounded-2xl border border-brand-hairline bg-card-alt p-8 text-center sm:p-10">
+    <h2 class="text-h2">
+      Teste por {OFERTA.garantiaDias} dias.<br />
+      Se não fizer sentido, <span class="text-brand">reembolso total.</span>
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl">
+      Você tem {OFERTA.garantiaDias} dias para acessar o material, fazer os primeiros
+      exercícios e sentir se faz sentido para você. Se decidir que não é o momento,
+      basta pedir o reembolso.
+    </p>
+    <ul class="mx-auto mt-6 max-w-md space-y-2.5 text-left">
+      {
+        pontos.map((p) => (
+          <li class="flex items-start gap-2.5 text-body">
+            <span
+              aria-hidden="true"
+              class="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-wash text-fine font-bold text-brand"
+            >
+              ✓
+            </span>
+            {p}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Secao>

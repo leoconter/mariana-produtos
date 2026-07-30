@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://li.marianavalentina.com.br/sitemap-index.xml

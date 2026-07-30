@@ -1,0 +1,54 @@
+---
+/**
+ * Bloco 10 — Privacidade e discrição (novo). Vergonha é a objeção
+ * nº1 desta audiência; responder de forma explícita.
+ * Só informações confirmadas no material atual.
+ * FALTA: a string exata que aparece na fatura do cartão.
+ */
+import Secao from './primitivos/Secao.astro';
+
+const garantias = [
+  {
+    titulo: 'Na fatura do cartão',
+    texto:
+      'Aparece um nome neutro de educação digital, sem qualquer referência ao conteúdo do produto.',
+  },
+  {
+    titulo: 'Nenhuma exposição',
+    texto:
+      'Sem consulta, sem chamada de vídeo, sem grupo. Você faz tudo sozinha, em qualquer lugar privado da sua casa.',
+  },
+  {
+    titulo: 'No seu celular',
+    texto:
+      'O acesso chega por e-mail e abre direto no navegador. Nada para instalar, nada visível para ninguém.',
+  },
+  {
+    titulo: 'Suporte discreto',
+    texto:
+      'Se quiser tirar dúvidas, o suporte por WhatsApp é individual e totalmente opcional.',
+  },
+];
+---
+
+<Secao fundo="wash">
+  <p class="eyebrow">Privacidade</p>
+  <h2 class="mt-2 text-h2">
+    Ninguém precisa saber — <span class="text-brand">nem vai</span>
+  </h2>
+  <p class="mt-3 max-w-2xl">
+    Esse assunto é seu. O protocolo foi desenhado para você começar, avançar e concluir
+    sem se expor a ninguém.
+  </p>
+
+  <div class="mt-8 grid gap-4 sm:grid-cols-2">
+    {
+      garantias.map((g) => (
+        <div class="rounded-xl border border-brand-hairline bg-card p-5">
+          <h3 class="text-h3">{g.titulo}</h3>
+          <p class="mt-2 text-fine">{g.texto}</p>
+        </div>
+      ))
+    }
+  </div>
+</Secao>
