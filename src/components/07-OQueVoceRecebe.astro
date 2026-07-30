@@ -11,6 +11,7 @@ import capa from '../assets/capa-ebook.jpg';
 import Secao from './primitivos/Secao.astro';
 import { OFERTA } from '../data/oferta';
 
+// Ordem: suporte na 3ª posição (alto valor percebido); bônus por último.
 const entregaveis = [
   {
     titulo: 'Ebook do Método Liberdade Íntima',
@@ -23,23 +24,24 @@ const entregaveis = [
     texto: 'Missões diárias guiadas de 5 a 10 minutos. Cada dia constrói sobre o anterior.',
   },
   {
+    titulo: 'Suporte via WhatsApp',
+    texto: 'Individual e opcional, para tirar dúvidas sobre os exercícios e o protocolo.',
+  },
+  {
     titulo: 'Vídeos explicativos',
     texto: 'Para te guiar na jornada inicial e mostrar como aplicar cada exercício.',
     /* FALTA: quantos vídeos, duração */
-  },
-  {
-    titulo: 'Bônus: guia da cólica',
-    texto: '5 coisas que estão piorando a sua cólica — e o que fazer sobre cada uma.',
-  },
-  {
-    titulo: 'Suporte via WhatsApp',
-    texto: 'Individual e opcional, para tirar dúvidas sobre os exercícios e o protocolo.',
   },
   {
     titulo: 'Acesso vitalício',
     texto:
       'Chega por e-mail em minutos, abre no celular ou computador. Refaça quantas vezes quiser.',
     /* FALTA: nome da plataforma/área de membros */
+  },
+  {
+    /* NOTA: bônus off-thesis, candidato a substituição */
+    titulo: 'Bônus: guia da cólica',
+    texto: '5 coisas que estão piorando a sua cólica — e o que fazer sobre cada uma.',
   },
 ];
 ---

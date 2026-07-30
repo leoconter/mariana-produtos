@@ -14,22 +14,22 @@ const pilares = [
   {
     termo: 'Neuroeducação',
     traducao:
-      'desliga o alerta do sistema nervoso que mantém seu corpo em modo de defesa. Você entende por que trava e aprende a interromper o ciclo.',
+      'Desliga o alerta do sistema nervoso que mantém seu corpo em modo de defesa. Você entende por que trava e aprende a interromper o ciclo.',
   },
   {
     termo: 'Ativação pélvica',
     traducao:
-      'exercícios curtos e progressivos que ensinam a musculatura a soltar. Sem forçar, sem dor, sem pressa.',
+      'Exercícios curtos e progressivos que ensinam a musculatura a soltar. Sem forçar, sem dor, sem pressa.',
   },
   {
     termo: 'Reprogramação sensorial',
     traducao:
-      'o cérebro aprende a separar toque de dor. Aos poucos, o corpo reconhece intimidade como segurança, não como ameaça.',
+      'O cérebro aprende a separar toque de dor. Aos poucos, o corpo reconhece intimidade como segurança, não como ameaça.',
   },
   {
     termo: 'Ritual de 21 dias',
     traducao:
-      'micro passos diários para adaptação sem sobrecarga. Cada dia constrói sobre o anterior, criando uma base sólida e duradoura.',
+      'Micro passos diários para adaptação sem sobrecarga. Cada dia constrói sobre o anterior, criando uma base sólida e duradoura.',
   },
 ];
 ---
@@ -50,9 +50,7 @@ const pilares = [
       pilares.map((p) => (
         <div class="rounded-xl border border-line bg-card-alt p-5">
           <h3 class="text-h3">{p.termo}</h3>
-          <p class="mt-2 text-body">
-            Em palavras simples: {p.traducao}
-          </p>
+          <p class="mt-2 text-body">{p.traducao}</p>
         </div>
       ))
     }

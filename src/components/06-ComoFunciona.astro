@@ -45,7 +45,10 @@ const passos = [
         {
           passos.map((p, i) => (
             <li class="flex items-start gap-3">
-              <span class="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-brand-wash font-bold text-brand">
+              <span
+                class="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-brand-wash font-bold text-brand"
+                aria-hidden="true"
+              >
                 {i + 1}
               </span>
               <div>

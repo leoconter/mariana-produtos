@@ -39,8 +39,16 @@ export const FAQ: Pergunta[] = [
     a: 'Não. Não tem consulta, não tem grupo, não tem chamada de vídeo. O acesso chega por e-mail e você faz tudo sozinha, em casa. Na fatura do cartão aparece um nome neutro de educação digital, sem qualquer referência ao conteúdo do produto.',
   },
   {
+    q: 'E o meu parceiro? Preciso envolver ele nisso?',
+    a: 'Não. O protocolo é feito por você, sozinha, no seu tempo. Muitas mulheres preferem começar sem contar nada e falar sobre o assunto só quando já sentem diferença. A escolha é sua, dos dois lados.',
+  },
+  {
     q: 'Posso fazer no meu ritmo?',
     a: 'Sim. O acesso é vitalício. Mesmo com o protocolo de 21 dias sugerido, você pode adaptar ao seu tempo e repetir quantas vezes quiser.',
+  },
+  {
+    q: 'Por que custa só R$37?',
+    a: 'Porque é digital. É o mesmo conhecimento que a Dra. Mariana aplica em consultório, no formato que você faz sozinha, em casa — sem custo de sessão, deslocamento ou agenda. O pagamento é único: R$37, sem mensalidade.',
   },
   {
     q: 'Como acesso após comprar?',

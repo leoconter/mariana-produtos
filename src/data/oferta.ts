@@ -24,15 +24,18 @@ export const OFERTA = {
   garantiaDias: 7, // FALTA: cliente autorizar 30 dias ("teste o protocolo inteiro")
   provaSocial: 'Mais de 1.500 mulheres já entraram no protocolo',
 
-  // Lista única de entregáveis (copy atual da caixa de oferta)
+  // Lista única de entregáveis (copy atual da caixa de oferta).
+  // Ordem: suporte individual subiu p/ 3ª posição (maior valor
+  // percebido num produto de R$37); bônus despriorizado p/ último.
   incluidos: [
     'Ebook completo do Método Liberdade Íntima (passo a passo)',
     'Ritual de 21 dias com missões diárias guiadas',
+    'Suporte individual via WhatsApp',
     'Vídeos explicativos para te guiar na jornada inicial',
     'Exercícios práticos de 5 a 10 min por dia',
     'Neuroeducação para reduzir ansiedade e medo',
-    'Bônus: 5 coisas que estão piorando a sua cólica',
-    'Suporte individual via WhatsApp',
     'Acesso vitalício a todo o material',
+    // NOTA: bônus off-thesis, candidato a substituição
+    'Bônus: 5 coisas que estão piorando a sua cólica',
   ],
 } as const;

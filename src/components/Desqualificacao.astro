@@ -1,0 +1,52 @@
+---
+/**
+ * Bloco de desqualificação (iteração 01, item 1.4). Entre a
+ * privacidade e a caixa de oferta. Duas colunas, compacto, sem
+ * ícones decorativos. A honestidade da segunda coluna é o que
+ * faz o bloco funcionar.
+ */
+const paraVoce = [
+  'sente dor, ardência ou travamento na relação',
+  'já tentou lubrificante ou remédio e o corpo continua fechando',
+  'quer resolver em casa, sem exposição',
+  'consegue reservar 5 a 10 minutos por dia',
+];
+const naoParaVoce = [
+  'sua dor é recente, intensa ou veio com outros sintomas ainda não investigados',
+  'você procura solução instantânea sem prática diária',
+  'você espera que isso substitua acompanhamento médico',
+];
+---
+
+<section class="bg-card">
+  <div class="mx-auto w-full max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
+    <div class="grid gap-6 sm:grid-cols-2">
+      <div class="rounded-xl border border-brand-hairline bg-brand-wash p-5">
+        <h2 class="text-h3">É para você se</h2>
+        <ul class="mt-3 space-y-2">
+          {
+            paraVoce.map((item) => (
+              <li class="flex items-start gap-2 text-body">
+                <span class="mt-2.5 size-1 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="rounded-xl border border-line bg-card-alt p-5">
+        <h2 class="text-h3">Não é para você se</h2>
+        <ul class="mt-3 space-y-2">
+          {
+            naoParaVoce.map((item) => (
+              <li class="flex items-start gap-2 text-body">
+                <span class="mt-2.5 size-1 shrink-0 rounded-full bg-muted" aria-hidden="true" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

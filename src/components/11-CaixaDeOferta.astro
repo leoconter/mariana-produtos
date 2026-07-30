@@ -47,6 +47,36 @@ import { OFERTA } from '../data/oferta';
         }
       </ul>
 
+      <!-- 1b. Ancoragem de custo: consultório vs protocolo -->
+      <!-- FALTA: valor médio de sessão de fisioterapia pélvica particular
+           (fornecido pelo Leo). Ao receber, trocar a 1ª linha da coluna
+           esquerda por "R$___ por sessão". -->
+      <div class="mt-7 rounded-xl border border-line bg-card-alt p-4 sm:p-5">
+        <div class="grid grid-cols-2 gap-x-4 text-fine">
+          <p class="font-bold text-muted">Tratamento em consultório</p>
+          <p class="font-bold text-ink">{OFERTA.nome}</p>
+
+          <p class="mt-2 border-t border-line pt-2">Você paga por sessão</p>
+          <p class="mt-2 border-t border-line pt-2 font-semibold text-ink">
+            {OFERTA.precoFmt}, uma vez
+          </p>
+
+          <p class="mt-2 border-t border-line pt-2">Múltiplas sessões ao longo de meses</p>
+          <p class="mt-2 border-t border-line pt-2 font-semibold text-ink">
+            21 dias, 5–10 min por dia
+          </p>
+
+          <p class="mt-2 border-t border-line pt-2">Deslocamento, agenda, exposição</p>
+          <p class="mt-2 border-t border-line pt-2 font-semibold text-ink">
+            100% em casa, privado
+          </p>
+        </div>
+        <p class="mt-4 text-fine">
+          É o mesmo conhecimento que a Dra. Mariana aplica em consultório, no formato
+          que você faz sozinha, em casa.
+        </p>
+      </div>
+
       <!-- 2. Preço com ancoragem -->
       <div class="mt-7 text-center">
         <p class="text-fine text-muted">de <s>{OFERTA.ancoragemFmt}</s> por</p>

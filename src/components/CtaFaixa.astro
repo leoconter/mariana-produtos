@@ -1,0 +1,20 @@
+---
+/**
+ * CTA intermediário (iteração 01, item 1.3). Faixa compacta após
+ * o pico de valor percebido ("O que chega para você hoje").
+ * Não compete com a caixa de oferta principal.
+ */
+import Cta from './primitivos/Cta.astro';
+import { OFERTA } from '../data/oferta';
+---
+
+<section class="border-y border-brand-hairline bg-brand-wash">
+  <div class="mx-auto w-full max-w-5xl px-5 py-8 text-center sm:px-8">
+    <p class="text-body-lg font-semibold text-ink">
+      Tudo isso, acesso imediato, por {OFERTA.precoFmt}.
+    </p>
+    <div class="mt-4">
+      <Cta />
+    </div>
+  </div>
+</section>
