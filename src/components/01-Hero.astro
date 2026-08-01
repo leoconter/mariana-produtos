@@ -1,9 +1,9 @@
 ---
 /**
- * Bloco 1 — Hero (it.03: 10 elementos → 6, ~40 palavras).
- * O hero não convence — faz reconhecer e rolar. Todos os CTAs
- * ancoram em #oferta, então quem já decidiu pula para o preço.
- * Hierarquia: wordmark < linha emocional < H1.
+ * Bloco 1 — Hero. Mobile: ocupa a tela inteira (min-h-svh);
+ * H1 direto ao ponto, capa grande abaixo do reforço, centrada
+ * no espaço restante. Desktop: grade texto | capa.
+ * (Wordmark e linha emocional removidos a pedido do Leo.)
  */
 import { Picture } from 'astro:assets';
 import capa from '../assets/capa-ebook.jpg';
@@ -21,54 +21,42 @@ import { OFERTA } from '../data/oferta';
   </div>
 
   <div
-    class="relative mx-auto grid w-full max-w-5xl px-5 pt-6 pb-10 sm:px-8 sm:pt-10 sm:pb-14 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-20 lg:pt-16 lg:pb-20"
+    class="relative mx-auto flex min-h-svh w-full max-w-5xl flex-col px-5 pt-10 pb-8 sm:px-8 lg:grid lg:min-h-0 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-20 lg:pt-16 lg:pb-20"
   >
     <div>
-      <!-- Mobile: capa pequena acima do texto (some no desktop) -->
-      <Picture
-        src={capa}
-        alt={`Capa do ebook ${OFERTA.nome}`}
-        width={112}
-        densities={[1, 2]}
-        formats={['avif', 'webp']}
-        fallbackFormat="jpg"
-        loading="eager"
-        fetchpriority="high"
-        class="anim-rise mb-2 w-12 rotate-2 rounded-md shadow-md shadow-brand-line/60 min-[360px]:w-14 lg:hidden"
-      />
-
-      <!-- 1. Wordmark discreto -->
-      <p class="anim-rise text-fine font-bold text-ink">
-        Liberdade <span class="text-brand">Íntima</span>
-      </p>
-
-      <!-- 2. Linha emocional: faz parar (menor que o H1) -->
-      <p class="anim-rise mt-2.5 font-serif text-body-lg font-medium text-ink" style="animation-delay: 0.06s;">
-        Você não está quebrada. Seu corpo está em defesa.
-      </p>
-
-      <!-- 3. H1: o que o produto faz -->
-      <h1 class="anim-rise mt-2 max-w-3xl text-h1" style="animation-delay: 0.12s;">
+      <h1 class="anim-rise max-w-3xl text-h1">
         Reduza a dor na relação <span class="italic text-brand">em até 21 dias</span>
       </h1>
 
-      <!-- 4. Subheadline: mecanismo + autora em uma linha -->
-      <p class="anim-rise mt-3 max-w-xl text-body-lg" style="animation-delay: 0.16s;">
+      <p class="anim-rise mt-3 max-w-xl text-body-lg" style="animation-delay: 0.06s;">
         Fisioterapia pélvica para fazer em casa, por {OFERTA.autora}.
       </p>
 
-      <!-- 5. Diferenciais em linha única -->
-      <p class="anim-rise mt-4 text-fine font-semibold text-body" style="animation-delay: 0.2s;">
+      <p class="anim-rise mt-4 text-fine font-semibold text-body" style="animation-delay: 0.1s;">
         Sem medicamentos · 5 a 10 min por dia · Sem exposição
       </p>
 
-      <!-- 6. CTA + uma linha de reforço -->
-      <div class="anim-rise mt-5" style="animation-delay: 0.24s;">
+      <div class="anim-rise mt-5" style="animation-delay: 0.14s;">
         <Cta />
         <p class="mt-2.5 text-fine text-muted">
           Mais de 1.500 mulheres · Garantia de {OFERTA.garantiaDias} dias
         </p>
       </div>
+    </div>
+
+    <!-- Mobile: capa grande centrada no espaço restante da tela -->
+    <div class="anim-rise flex flex-1 items-center justify-center pt-8 lg:hidden" style="animation-delay: 0.2s;">
+      <Picture
+        src={capa}
+        alt={`Capa do ebook ${OFERTA.nome}`}
+        width={416}
+        densities={[1, 2]}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        loading="eager"
+        fetchpriority="high"
+        class="w-auto max-h-[36svh] rotate-2 rounded-xl shadow-xl shadow-brand-line/60"
+      />
     </div>
 
     <!-- Desktop: capa ao lado do texto -->
@@ -82,7 +70,7 @@ import { OFERTA } from '../data/oferta';
       loading="lazy"
       decoding="async"
       class="anim-rise hidden w-72 rotate-2 rounded-xl shadow-xl shadow-brand-line/60 lg:block"
-      style="animation-delay: 0.3s;"
+      style="animation-delay: 0.2s;"
     />
   </div>
 </header>
