@@ -1,17 +1,11 @@
 ---
 /**
- * Bloco 10 — Privacidade e discrição. Linhas com lead em bold:
- * a objeção nº1 respondida em 4 frases, não em 4 parágrafos.
+ * Bloco 10 — Privacidade. It.02: de grade de cards para prosa
+ * curta com destaques em bold (3 pontos — "nenhuma exposição" e
+ * "no seu celular" fundidos). Quebra o ritmo de listas.
  * FALTA: a string exata que aparece na fatura do cartão.
  */
 import Secao from './primitivos/Secao.astro';
-
-const garantias = [
-  { lead: 'Na fatura do cartão', texto: 'nome neutro de educação digital, sem referência ao conteúdo.' },
-  { lead: 'Nenhuma exposição', texto: 'sem consulta, sem chamada de vídeo, sem grupo.' },
-  { lead: 'No seu celular', texto: 'chega por e-mail, abre no navegador. Nada para instalar.' },
-  { lead: 'Suporte discreto', texto: 'WhatsApp individual — e só se você quiser.' },
-];
 ---
 
 <Secao fundo="wash">
@@ -21,20 +15,22 @@ const garantias = [
       <h2 class="mt-2 text-h2">
         Ninguém precisa saber — <span class="italic text-brand">nem vai</span>
       </h2>
-      <p class="mt-4 max-w-xl text-fine text-muted">
-        Esse assunto é seu. O protocolo foi desenhado para você começar e concluir sem
-        se expor a ninguém.
-      </p>
     </div>
 
-    <ul class="mt-7 max-w-xl space-y-3.5 lg:mt-2">
-      {
-        garantias.map((g) => (
-          <li class="border-l-2 border-brand-line pl-4 text-body">
-            <strong class="text-ink">{g.lead}:</strong> {g.texto}
-          </li>
-        ))
-      }
-    </ul>
+    <div class="mt-6 max-w-xl space-y-4 lg:mt-2">
+      <p>
+        <strong class="text-ink">Na fatura do cartão</strong> aparece um nome neutro de
+        educação digital, sem qualquer referência ao conteúdo.
+      </p>
+      <p>
+        <strong class="text-ink">Sem consulta, sem grupo, sem chamada de vídeo</strong> —
+        o acesso chega por e-mail e abre no navegador do seu celular. Nada para
+        instalar, nada visível para ninguém.
+      </p>
+      <p>
+        <strong class="text-ink">O suporte por WhatsApp</strong> é individual, e só se
+        você quiser.
+      </p>
+    </div>
   </div>
 </Secao>

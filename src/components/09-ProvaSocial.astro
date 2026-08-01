@@ -6,7 +6,7 @@
  * e especificidade (ver src/data/depoimentos.ts).
  */
 import Secao from './primitivos/Secao.astro';
-import { DEPOIMENTOS, PADRAO_QUE_SE_REPETE } from '../data/depoimentos';
+import { DEPOIMENTOS } from '../data/depoimentos';
 ---
 
 <Secao fundo="branco">
@@ -42,17 +42,5 @@ import { DEPOIMENTOS, PADRAO_QUE_SE_REPETE } from '../data/depoimentos';
     }
   </div>
 
-  <div class="mt-8 rounded-xl border border-brand-hairline bg-brand-wash p-6">
-    <p class="eyebrow text-center">O padrão que se repete</p>
-    <ul class="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
-      {
-        PADRAO_QUE_SE_REPETE.map((p) => (
-          <li class="flex items-center gap-2 text-body">
-            <span class="size-1.5 shrink-0 rounded-full bg-brand-soft" aria-hidden="true" />
-            {p}
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  <!-- "O padrão que se repete" removido (it.02): repetia o bloco Antes/Depois -->
 </Secao>

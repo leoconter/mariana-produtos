@@ -11,13 +11,14 @@ import { OFERTA } from '../../data/oferta';
 interface Props {
   /** true = link real para o checkout Kirvano (só na caixa de oferta) */
   checkout?: boolean;
-  /** Mostra a linha "Acesso imediato. Privado. Garantia..." abaixo */
+  /** Mostra a linha "Acesso imediato. Privado. Garantia..." abaixo.
+   *  It.02: default false — a linha vive só no hero e na caixa. */
   microcopy?: boolean;
   /** Ocupa a largura toda (caixa de oferta, CTA fixo) */
   bloco?: boolean;
   classe?: string;
 }
-const { checkout = false, microcopy = true, bloco = false, classe = '' } = Astro.props;
+const { checkout = false, microcopy = false, bloco = false, classe = '' } = Astro.props;
 ---
 
 <div class={bloco ? 'w-full' : 'inline-block'}>

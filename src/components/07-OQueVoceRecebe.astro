@@ -1,14 +1,12 @@
 ---
 /**
- * Bloco 7 — O que você recebe. Checklist: menos moldura, mais
- * ritmo de leitura. O comprador precisa enxergar o objeto.
+ * Bloco 7 — O que você recebe. It.02: sem a capa (já está no
+ * hero), lista com mais respiro e nome do entregável em peso
+ * claramente maior que a descrição.
  * FALTA: nº de páginas do ebook, nº/duração dos vídeos e nome da
  * plataforma de acesso.
  */
-import { Picture } from 'astro:assets';
-import capa from '../assets/capa-ebook.jpg';
 import Secao from './primitivos/Secao.astro';
-import { OFERTA } from '../data/oferta';
 
 // Ordem: suporte na 3ª posição (alto valor percebido); bônus por último.
 const entregaveis = [
@@ -17,7 +15,7 @@ const entregaveis = [
     texto: 'o guia completo, passo a passo, baseado na fisioterapia pélvica.',
     /* FALTA: nº de páginas */
   },
-  { titulo: 'Ritual de 21 dias', texto: 'missões diárias guiadas de 5 a 10 minutos.' },
+  { titulo: 'Ritual de 21 dias', texto: 'missões diárias guiadas.' },
   { titulo: 'Suporte via WhatsApp', texto: 'individual e opcional, para tirar dúvidas.' },
   {
     titulo: 'Vídeos explicativos',
@@ -38,42 +36,27 @@ const entregaveis = [
 ---
 
 <Secao fundo="branco">
-  <div class="grid items-start gap-8 sm:grid-cols-[1fr_auto]">
-    <div>
-      <p class="eyebrow">Material completo</p>
-      <h2 class="mt-2 text-h2">
-        O que chega para você <span class="italic text-brand">hoje</span>
-      </h2>
+  <p class="eyebrow">Material completo</p>
+  <h2 class="mt-2 text-h2">
+    O que chega para você <span class="italic text-brand">hoje</span>
+  </h2>
 
-      <ul class="mt-7 max-w-xl space-y-4">
-        {
-          entregaveis.map((e) => (
-            <li class="flex items-start gap-3">
-              <span
-                aria-hidden="true"
-                class="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-wash text-fine font-bold text-brand"
-              >
-                ✓
-              </span>
-              <p class="text-body">
-                <strong class="text-ink">{e.titulo}</strong> — {e.texto}
-              </p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-
-    <Picture
-      src={capa}
-      alt={`Capa do ebook ${OFERTA.nome}`}
-      width={280}
-      densities={[1, 2]}
-      formats={['avif', 'webp']}
-      fallbackFormat="jpg"
-      loading="lazy"
-      decoding="async"
-      class="hidden w-36 -rotate-2 self-center rounded-lg shadow-lg shadow-brand-line/60 sm:block sm:w-56 lg:w-72"
-    />
-  </div>
+  <ul class="mt-8 max-w-2xl space-y-6">
+    {
+      entregaveis.map((e) => (
+        <li class="flex items-start gap-3.5">
+          <span
+            aria-hidden="true"
+            class="mt-1.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-wash text-fine font-bold text-brand"
+          >
+            ✓
+          </span>
+          <div>
+            <p class="text-h3 text-ink">{e.titulo}</p>
+            <p class="mt-0.5 text-fine text-muted">{e.texto}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
 </Secao>

@@ -17,13 +17,13 @@ import OQueMuda from '../components/08-OQueMuda.astro';
 import ProvaSocial from '../components/09-ProvaSocial.astro';
 import Privacidade from '../components/10-Privacidade.astro';
 import CaixaDeOferta from '../components/11-CaixaDeOferta.astro';
-import Garantia from '../components/12-Garantia.astro';
 import Especialista from '../components/13-Especialista.astro';
 import Faq from '../components/14-Faq.astro';
 import UltimaChamada from '../components/15-UltimaChamada.astro';
 import Rodape from '../components/16-Rodape.astro';
 import CtaFaixa from '../components/CtaFaixa.astro';
 import Desqualificacao from '../components/Desqualificacao.astro';
+import Respiro from '../components/primitivos/Respiro.astro';
 import CtaFixoMobile from '../components/CtaFixoMobile.astro';
 import { OFERTA } from '../data/oferta';
 ---
@@ -35,7 +35,9 @@ import { OFERTA } from '../data/oferta';
     <DorTemNome />
     <OfertaMini />
     <CicloDaDor />
+    <Respiro frase="E o ciclo recomeça — um pouco mais forte a cada volta." />
     <Mecanismo />
+    <Respiro frase="É como resetar um sistema travado e ensinar seu corpo a parar de lutar contra o prazer." />
     <ComoFunciona />
     <OQueVoceRecebe />
     <CtaFaixa />
@@ -44,7 +46,6 @@ import { OFERTA } from '../data/oferta';
     <Privacidade />
     <Desqualificacao />
     <CaixaDeOferta />
-    <Garantia />
     <Especialista />
     <Faq />
     <UltimaChamada />

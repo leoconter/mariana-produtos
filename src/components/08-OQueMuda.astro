@@ -44,13 +44,14 @@ const depois = [
       </ul>
     </div>
 
-    <div class="rounded-2xl border border-brand-line bg-brand-wash p-5 sm:p-6">
-      <p class="eyebrow">Depois dos 21 dias</p>
+    <!-- It.02: coluna "Depois" na cor da marca — o contraste faz o trabalho -->
+    <div class="rounded-2xl bg-brand p-5 sm:p-6">
+      <p class="eyebrow text-white/85">Depois dos 21 dias</p>
       <ul class="mt-3 space-y-2.5">
         {
           depois.map((item) => (
-            <li class="flex items-start gap-2.5 text-body font-semibold text-ink">
-              <span class="mt-2.5 size-1 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+            <li class="flex items-start gap-2.5 text-body font-semibold text-white">
+              <span class="mt-2.5 size-1 shrink-0 rounded-full bg-white/70" aria-hidden="true" />
               {item}
             </li>
           ))

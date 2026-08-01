@@ -1,0 +1,18 @@
+---
+/**
+ * Bloco de respiro (it.02): uma frase só, tipografia grande,
+ * fundo de cor cheia. Sem card, sem lista, sem botão, sem rótulo.
+ * Pausa entre blocos densos — as frases vêm de fechos que já
+ * existiam na página, realocados com peso visual.
+ */
+interface Props {
+  frase: string;
+}
+const { frase } = Astro.props;
+---
+
+<section class="bg-brand">
+  <div class="mx-auto w-full max-w-4xl px-5 py-16 text-center sm:px-8 sm:py-24" data-reveal>
+    <p class="font-serif text-h2 italic text-white">{frase}</p>
+  </div>
+</section>

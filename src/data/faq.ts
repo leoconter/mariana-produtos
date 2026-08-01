@@ -12,11 +12,11 @@ export interface Pergunta {
 export const FAQ: Pergunta[] = [
   {
     q: 'Funciona para o meu caso?',
-    a: 'O protocolo trabalha a raiz neuromuscular que é comum aos casos de tensão pélvica e dor: o sistema nervoso em alerta e a musculatura que não aprendeu a soltar. É flexível, progressivo e respeita seu ritmo. Ele não substitui investigação médica — se a sua dor é recente, intensa ou vem com outros sintomas, procure avaliação profissional.',
+    a: 'O protocolo trabalha a raiz neuromuscular comum aos casos de tensão pélvica e dor, de forma flexível e progressiva, no seu ritmo. Ele não substitui investigação médica — se a sua dor é recente, intensa ou vem com outros sintomas, procure avaliação profissional.',
   },
   {
     q: 'Já tentei de tudo e nada resolveu. Por que isso seria diferente?',
-    a: 'Lubrificantes, pomadas e remédios agem no sintoma. Aqui você trabalha a causa: o sistema nervoso em alerta e a musculatura que não aprendeu a soltar. É uma abordagem diferente.',
+    a: 'Lubrificantes, pomadas e remédios agem no sintoma. Aqui você trabalha a causa — por isso é uma abordagem diferente.',
   },
   {
     q: 'Preciso de experiência com exercícios pélvicos?',

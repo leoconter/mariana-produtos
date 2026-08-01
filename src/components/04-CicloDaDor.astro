@@ -1,8 +1,8 @@
 ---
 /**
- * Bloco 4 — O ciclo que fecha o corpo. Timeline com trilho:
- * a ordem É a informação (cada passo alimenta o próximo).
- * Copy integral da página atual.
+ * Bloco 4 — O ciclo que fecha o corpo. Timeline com trilho.
+ * It.02: 6 etapas → 4 (as etapas de distância/autoestima/desejo
+ * consolidadas na última). Fecho migrou para o Respiro 1.
  */
 import Secao from './primitivos/Secao.astro';
 
@@ -10,13 +10,11 @@ const passos = [
   'A tensão muscular aumenta a cada tentativa frustrada',
   'O medo se instala e vira resposta automática do corpo',
   'Você começa a evitar a intimidade, e a culpa cresce',
-  'A distância do parceiro(a) se torna inevitável',
-  'A autoestima desmorona em silêncio',
-  'O desejo some, não porque você não quer, mas porque a dor venceu',
+  'O desejo some — não porque você não quer, mas porque a dor venceu',
 ];
 ---
 
-<Secao fundo="wash">
+<Secao fundo="surface">
   <div class="lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-start lg:gap-16">
     <div>
       <p class="eyebrow">Consequência silenciosa</p>
@@ -27,32 +25,23 @@ const passos = [
         O sistema nervoso interpreta cada nova tentativa como ameaça — e responde com
         mais rigidez.
       </p>
-      <p class="mt-7 hidden max-w-xl font-serif text-h3 italic text-ink lg:block">
-        E o ciclo recomeça — um pouco mais forte a cada volta.
-      </p>
     </div>
 
-    <div>
-      <ol class="relative mt-8 max-w-xl space-y-5 border-l border-brand-line pl-6 lg:mt-2">
-        {
-          passos.map((p, i) => (
-            <li class="relative text-body">
-              <span
-                class="absolute -left-[31px] top-1.5 flex size-2.5 rounded-full bg-brand"
-                aria-hidden="true"
-              />
-              <span class="font-serif font-medium text-brand" aria-hidden="true">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              {' '}{p}
-            </li>
-          ))
-        }
-      </ol>
-
-      <p class="mt-7 max-w-xl font-serif text-h3 italic text-ink lg:hidden">
-        E o ciclo recomeça — um pouco mais forte a cada volta.
-      </p>
-    </div>
+    <ol class="relative mt-8 max-w-xl space-y-5 border-l border-brand-line pl-6 lg:mt-2">
+      {
+        passos.map((p, i) => (
+          <li class="relative text-body">
+            <span
+              class="absolute -left-[31px] top-1.5 flex size-2.5 rounded-full bg-brand"
+              aria-hidden="true"
+            />
+            <span class="font-serif font-medium text-brand" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            {' '}{p}
+          </li>
+        ))
+      }
+    </ol>
   </div>
 </Secao>

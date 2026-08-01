@@ -27,10 +27,3 @@ export const DEPOIMENTOS: Depoimento[] = [
       'Fiz no meu tempo, em casa, sem vergonha. Mudou completamente minha relação comigo mesma e com meu parceiro.',
   },
 ];
-
-export const PADRAO_QUE_SE_REPETE = [
-  'Menos medo da intimidade',
-  'Menos ardência e tensão',
-  'Mais confiança no próprio corpo',
-  'Mais conexão com o parceiro',
-];
