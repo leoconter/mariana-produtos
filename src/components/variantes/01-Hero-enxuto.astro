@@ -1,18 +1,17 @@
 ---
 /**
- * Bloco 1 — Hero (it.03: 10 elementos → 6, ~40 palavras).
- * O hero não convence — faz reconhecer e rolar. Todos os CTAs
- * ancoram em #oferta, então quem já decidiu pula para o preço.
- * Hierarquia: wordmark < linha emocional < H1.
+ * VARIANTE B do hero (it.03) — NÃO ESTÁ NO AR.
+ * 5 elementos, ~30 palavras: remove também a linha de diferenciais.
+ * Para teste A/B depois que o hero da it.03 acumular dados.
+ * Uso: trocar o import em src/pages/liberdade.astro.
  */
 import { Picture } from 'astro:assets';
-import capa from '../assets/capa-ebook.jpg';
-import Cta from './primitivos/Cta.astro';
-import { OFERTA } from '../data/oferta';
+import capa from '../../assets/capa-ebook.jpg';
+import Cta from '../primitivos/Cta.astro';
+import { OFERTA } from '../../data/oferta';
 ---
 
 <header class="relative overflow-hidden bg-surface">
-  <!-- Atmosfera quente no topo -->
   <div
     class="pointer-events-none absolute inset-x-0 top-0 h-[70%]"
     style="background: radial-gradient(120% 70% at 50% -8%, color-mix(in srgb, var(--color-brand) 10%, transparent), transparent 62%);"
@@ -24,7 +23,6 @@ import { OFERTA } from '../data/oferta';
     class="relative mx-auto grid w-full max-w-5xl px-5 pt-6 pb-10 sm:px-8 sm:pt-10 sm:pb-14 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-20 lg:pt-16 lg:pb-20"
   >
     <div>
-      <!-- Mobile: capa pequena acima do texto (some no desktop) -->
       <Picture
         src={capa}
         alt={`Capa do ebook ${OFERTA.nome}`}
@@ -34,36 +32,26 @@ import { OFERTA } from '../data/oferta';
         fallbackFormat="jpg"
         loading="eager"
         fetchpriority="high"
-        class="anim-rise mb-2 w-12 rotate-2 rounded-md shadow-md shadow-brand-line/60 min-[360px]:w-14 lg:hidden"
+        class="anim-rise mb-3 w-14 rotate-2 rounded-md shadow-md shadow-brand-line/60 lg:hidden"
       />
 
-      <!-- 1. Wordmark discreto -->
       <p class="anim-rise text-fine font-bold text-ink">
         Liberdade <span class="text-brand">Íntima</span>
       </p>
 
-      <!-- 2. Linha emocional: faz parar (menor que o H1) -->
-      <p class="anim-rise mt-2.5 font-serif text-body-lg font-medium text-ink" style="animation-delay: 0.06s;">
+      <p class="anim-rise mt-3 font-serif text-body-lg font-medium text-ink" style="animation-delay: 0.06s;">
         Você não está quebrada. Seu corpo está em defesa.
       </p>
 
-      <!-- 3. H1: o que o produto faz -->
       <h1 class="anim-rise mt-2 max-w-3xl text-h1" style="animation-delay: 0.12s;">
         Reduza a dor na relação <span class="italic text-brand">em até 21 dias</span>
       </h1>
 
-      <!-- 4. Subheadline: mecanismo + autora em uma linha -->
       <p class="anim-rise mt-3 max-w-xl text-body-lg" style="animation-delay: 0.16s;">
         Fisioterapia pélvica para fazer em casa, por {OFERTA.autora}.
       </p>
 
-      <!-- 5. Diferenciais em linha única -->
-      <p class="anim-rise mt-4 text-fine font-semibold text-body" style="animation-delay: 0.2s;">
-        Sem medicamentos · 5 a 10 min por dia · Sem exposição
-      </p>
-
-      <!-- 6. CTA + uma linha de reforço -->
-      <div class="anim-rise mt-5" style="animation-delay: 0.24s;">
+      <div class="anim-rise mt-5" style="animation-delay: 0.2s;">
         <Cta />
         <p class="mt-2.5 text-fine text-muted">
           Mais de 1.500 mulheres · Garantia de {OFERTA.garantiaDias} dias
@@ -71,7 +59,6 @@ import { OFERTA } from '../data/oferta';
       </div>
     </div>
 
-    <!-- Desktop: capa ao lado do texto -->
     <Picture
       src={capa}
       alt=""
@@ -82,7 +69,7 @@ import { OFERTA } from '../data/oferta';
       loading="lazy"
       decoding="async"
       class="anim-rise hidden w-72 rotate-2 rounded-xl shadow-xl shadow-brand-line/60 lg:block"
-      style="animation-delay: 0.3s;"
+      style="animation-delay: 0.26s;"
     />
   </div>
 </header>
