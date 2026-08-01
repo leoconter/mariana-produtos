@@ -5,7 +5,8 @@ import { OFERTA } from '../data/oferta';
 const titulo = 'Liberdade Íntima — Reduza a dor na relação em até 21 dias';
 const descricao =
   'Reduza a dor, a ardência e o travamento do corpo em até 21 dias com um protocolo prático, privado e baseado em neurociência. Sem medicamentos. Sem exposição. Por Dra. Mariana Della Valentina, fisioterapeuta pélvica.';
-const url = Astro.site?.toString() ?? 'https://li.marianavalentina.com.br/';
+// Canonical segue o caminho real da página (ex.: /liberdade/)
+const url = new URL(Astro.url.pathname, Astro.site ?? 'https://mariana-produtos.vercel.app').toString();
 ---
 
 <!doctype html>
