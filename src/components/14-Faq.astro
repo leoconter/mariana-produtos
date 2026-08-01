@@ -1,6 +1,6 @@
 ---
 /**
- * Bloco 14 — Perguntas frequentes. <details>/<summary> nativos,
+ * Bloco 14 — Perguntas frequentes. <details>/<summary class="text-left"> nativos,
  * estilizados em CSS. Zero JS.
  */
 import Secao from './primitivos/Secao.astro';
@@ -16,8 +16,8 @@ import { FAQ } from '../data/faq';
     {
       FAQ.map((item) => (
         <details class="faq-item">
-          <summary>{item.q}</summary>
-          <p class="px-5 pb-5 text-body">{item.a}</p>
+          <summary class="text-left">{item.q}</summary>
+          <p class="px-5 pb-5 text-left text-body">{item.a}</p>
         </details>
       ))
     }

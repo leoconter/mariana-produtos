@@ -31,7 +31,7 @@ import { OFERTA } from '../data/oferta';
     <div class="p-6 sm:p-8">
       <!-- 1. O que está incluso -->
       <p class="eyebrow">O que está incluído</p>
-      <ul class="mt-3 space-y-2">
+      <ul class="mt-3 space-y-2 text-left">
         {
           OFERTA.incluidos.map((item) => (
             <li class="flex items-start gap-2.5 text-body">
@@ -52,7 +52,7 @@ import { OFERTA } from '../data/oferta';
            (fornecido pelo Leo). Ao receber, trocar a 1ª linha da coluna
            esquerda por "R$___ por sessão". -->
       <div class="mt-7 rounded-xl border border-line bg-card-alt p-4 sm:p-5">
-        <div class="grid grid-cols-2 gap-x-4 text-fine">
+        <div class="grid grid-cols-2 gap-x-4 text-left text-fine">
           <p class="font-bold text-muted">Tratamento em consultório</p>
           <p class="font-bold text-ink">{OFERTA.nome}</p>
 

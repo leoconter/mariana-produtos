@@ -70,6 +70,16 @@
     outline-offset: 3px;
   }
 
+  /* Mobile: texto centralizado (pedido do Leo). Desktop mantém
+     o alinhamento editorial à esquerda. Listas com marcador/trilho
+     recebem text-left pontual nos componentes. */
+  @media (max-width: 1023px) {
+    main,
+    header {
+      text-align: center;
+    }
+  }
+
   ::selection {
     background-color: var(--color-brand);
     color: #fff;
@@ -180,28 +190,6 @@
     flex-shrink: 0;
   }
 
-  /* CTA fixo mobile */
-  #cta-fixo {
-    position: fixed;
-    inset: auto 0 0 0;
-    z-index: 50;
-    transform: translateY(110%);
-    transition: transform 0.3s ease;
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-  #cta-fixo.visivel {
-    transform: translateY(0);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    #cta-fixo {
-      transition: none;
-    }
-  }
-  @media (min-width: 900px) {
-    #cta-fixo {
-      display: none;
-    }
-  }
 }
 
 /* ---- Movimento (padrão fisio) — só com suporte e sem reduced-motion ---- */

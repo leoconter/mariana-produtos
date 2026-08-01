@@ -24,7 +24,6 @@ import Rodape from '../components/16-Rodape.astro';
 import CtaFaixa from '../components/CtaFaixa.astro';
 import Desqualificacao from '../components/Desqualificacao.astro';
 import Respiro from '../components/primitivos/Respiro.astro';
-import CtaFixoMobile from '../components/CtaFixoMobile.astro';
 import { OFERTA } from '../data/oferta';
 ---
 
@@ -51,14 +50,13 @@ import { OFERTA } from '../data/oferta';
     <UltimaChamada />
   </main>
   <Rodape />
-  <CtaFixoMobile />
 
   <!--
     Todo o JS da página (~1KB):
     1. Repasse de UTM: query string da LP anexada ao link Kirvano no clique
     2. InitiateCheckout antes do redirect
     3. ViewOffer quando a caixa de oferta entra no viewport
-    4. CTA fixo mobile: mostra após o bloco 3, esconde sobre a caixa
+    4. Scroll-reveal progressivo
   -->
   <script is:inline define:vars={{ nome: OFERTA.nome, valor: OFERTA.preco }}>
     (function () {
@@ -79,15 +77,6 @@ import { OFERTA } from '../data/oferta';
         if (window.fbq)
           fbq('track', 'InitiateCheckout', { content_name: nome, value: valor, currency: 'BRL' });
       });
-
-      var barra = document.getElementById('cta-fixo');
-      var oferta = document.getElementById('oferta');
-      var marco = document.getElementById('fim-oferta-mini');
-      if (!barra || !oferta || !marco || !('IntersectionObserver' in window)) return;
-
-      var naOferta = false;
-      var passouMarco = false;
-      var viuOferta = false;
 
       // Scroll-reveal (padrão fisio): progressivo, respeita reduced-motion
       if (
@@ -111,22 +100,19 @@ import { OFERTA } from '../data/oferta';
         });
       }
 
-      var io = new IntersectionObserver(function (entradas) {
-        entradas.forEach(function (en) {
-          if (en.target === oferta) {
-            naOferta = en.isIntersecting;
-            if (en.isIntersecting && !viuOferta) {
-              viuOferta = true;
+      // ViewOffer: 1× quando a caixa de oferta entra no viewport
+      var oferta = document.getElementById('oferta');
+      if (oferta && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entradas) {
+          entradas.forEach(function (en) {
+            if (en.isIntersecting) {
               if (window.fbq) fbq('trackCustom', 'ViewOffer');
+              io.disconnect();
             }
-          } else {
-            passouMarco = !en.isIntersecting && en.boundingClientRect.top < 0;
-          }
+          });
         });
-        barra.classList.toggle('visivel', passouMarco && !naOferta);
-      });
-      io.observe(oferta);
-      io.observe(marco);
+        io.observe(oferta);
+      }
     })();
   </script>
 </Base>
