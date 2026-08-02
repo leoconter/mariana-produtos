@@ -1,12 +1,15 @@
 ---
 import '../styles/global.css';
-import { OFERTA } from '../data/oferta';
+import { OFERTA } from '../data/li/oferta';
 
 interface Props {
   titulo?: string;
   descricao?: string;
   /** ViewContent no load (padrão: sim — LP). Página de obrigado desliga. */
   viewContent?: boolean;
+  /** Produto do ViewContent (padrão: Liberdade Íntima). */
+  vcNome?: string;
+  vcValor?: number;
   /** Página fora do índice de busca (obrigado). */
   noindex?: boolean;
 }
@@ -14,6 +17,8 @@ const {
   titulo = 'Liberdade Íntima — Reduza a dor na relação em até 21 dias',
   descricao = 'Reduza a dor, a ardência e o travamento do corpo em até 21 dias com um protocolo prático, privado e baseado em neurociência. Sem medicamentos. Sem exposição. Por Dra. Mariana Della Valentina, fisioterapeuta pélvica.',
   viewContent = true,
+  vcNome = OFERTA.nome,
+  vcValor = OFERTA.preco,
   noindex = false,
 } = Astro.props;
 // Canonical segue o caminho real da página (ex.: /liberdade/)
@@ -48,7 +53,7 @@ const url = new URL(Astro.url.pathname, Astro.site ?? 'https://mariana-produtos.
     <!-- Meta Pixel: stub imediato (eventos entram na fila), script
          injetado no window.load para não competir com fontes/imagens
          pela banda no primeiro render. Nenhum evento se perde. -->
-    <script is:inline define:vars={{ pixelId: OFERTA.pixelId, valor: OFERTA.preco, nome: OFERTA.nome, viewContent }}>
+    <script is:inline define:vars={{ pixelId: OFERTA.pixelId, valor: vcValor, nome: vcNome, viewContent }}>
       !(function (f) {
         if (f.fbq) return;
         var n = (f.fbq = function () {

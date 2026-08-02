@@ -1,0 +1,476 @@
+---
+/**
+ * LP Desbloqueando o Prazer (/prazer).
+ * Estrutura e copy da página atual (prazer.marianavalentina.com.br,
+ * Base44 client-rendered), reconstruída no design system do projeto.
+ * Padrões do projeto: CTAs ancoram em #oferta; só o botão da caixa
+ * vai ao checkout; HTML completo no primeiro byte; JS mínimo.
+ */
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Secao from '../components/primitivos/Secao.astro';
+import Respiro from '../components/primitivos/Respiro.astro';
+import { PRAZER } from '../data/prazer/oferta';
+import mockup from '../assets/prazer/mockup.png';
+import mariana from '../assets/prazer/mariana.jpg';
+---
+
+<Base
+  titulo="Desbloqueando o Prazer — melhore seu desejo, prazer e orgasmo"
+  descricao="Existe um bloqueio físico e neurológico que pode estar limitando o quanto o seu corpo consegue sentir. Programa digital da Dra. Mariana Della Valentina, fisioterapeuta pélvica."
+  vcNome={PRAZER.nome}
+  vcValor={PRAZER.preco}
+>
+  <main>
+    <!-- 1. Hero: tela inteira no mobile (padrão do projeto) -->
+    <header class="relative overflow-hidden bg-surface">
+      <div
+        class="pointer-events-none absolute inset-x-0 top-0 h-[70%]"
+        style="background: radial-gradient(120% 70% at 50% -8%, color-mix(in srgb, var(--color-brand) 10%, transparent), transparent 62%);"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div
+        class="relative mx-auto flex min-h-svh w-full max-w-5xl flex-col px-5 pt-10 pb-8 sm:px-8 lg:grid lg:min-h-0 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-20 lg:pt-16 lg:pb-20"
+      >
+        <div>
+          <p class="anim-rise eyebrow">Fisioterapia Pélvica · Método Exclusivo</p>
+
+          <h1 class="anim-rise mt-3 max-w-3xl text-h1" style="animation-delay: 0.06s;">
+            Quer melhorar seu desejo, <span class="italic text-brand">prazer e orgasmo?</span>
+          </h1>
+
+          <p class="anim-rise mt-3 max-w-xl text-body-lg" style="animation-delay: 0.12s;">
+            Existe um bloqueio físico e neurológico que pode estar limitando o quanto o
+            seu corpo consegue sentir. E ele pode ser trabalhado com práticas simples,
+            no seu tempo.
+          </p>
+
+          <div class="anim-rise mt-5" style="animation-delay: 0.18s;">
+            <a href="#oferta" class="btn-brand">
+              {PRAZER.ctaLabel}
+              <span class="arrow arrow-down" aria-hidden="true">↓</span>
+            </a>
+            <p class="mt-2.5 text-fine text-muted">{PRAZER.microcopy}</p>
+          </div>
+        </div>
+
+        <!-- Mobile: mockup centrado no espaço restante -->
+        <div class="anim-rise flex flex-1 items-center justify-center pt-8 lg:hidden" style="animation-delay: 0.24s;">
+          <Picture
+            src={mockup}
+            alt={`Mockup do programa ${PRAZER.nome}`}
+            width={480}
+            densities={[1, 2]}
+            formats={['avif', 'webp']}
+            fallbackFormat="png"
+            loading="eager"
+            fetchpriority="high"
+            class="w-auto max-h-[36svh]"
+          />
+        </div>
+
+        <!-- Desktop: mockup ao lado -->
+        <Picture
+          src={mockup}
+          alt=""
+          width={360}
+          densities={[1, 2]}
+          formats={['avif', 'webp']}
+          fallbackFormat="png"
+          loading="lazy"
+          decoding="async"
+          class="anim-rise hidden w-80 lg:block"
+          style="animation-delay: 0.24s;"
+        />
+      </div>
+    </header>
+
+    <!-- 2. Identificação -->
+    <Secao fundo="branco">
+      <h2 class="text-h2">
+        Se você chegou até aqui, <span class="italic text-brand">provavelmente já passou por algo assim:</span>
+      </h2>
+
+      <ul class="mx-auto mt-8 max-w-2xl space-y-4 text-left lg:mx-0">
+        {
+          PRAZER.dores.map((d) => (
+            <li class="flex items-start gap-3">
+              <span class="mt-2.5 size-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+              <span class="text-body">{d}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="mx-auto mt-7 max-w-2xl font-serif text-h3 italic text-ink lg:mx-0">
+        E o pior… muitas mulheres deixam de sentir dor — mas o prazer não volta junto.
+        E ninguém explica o porquê.
+      </p>
+    </Secao>
+
+    <!-- 3. Consequência silenciosa (a sala escura da página) -->
+    <section class="bg-ink">
+      <div class="mx-auto w-full max-w-5xl px-5 py-14 sm:px-8 sm:py-20">
+        <p class="eyebrow text-brand-soft" data-reveal>Consequência silenciosa</p>
+        <h2 class="mt-2 text-h2 text-surface" data-reveal>
+          Com o tempo, a ausência de prazer <span class="italic text-brand-soft">vai além do físico.</span>
+        </h2>
+
+        <div class="mt-8 space-y-7 sm:mt-10 lg:grid lg:grid-cols-3 lg:gap-12 lg:space-y-0">
+          {
+            PRAZER.consequencias.map((c, i) => (
+              <div data-reveal style={`--d:${i * 120}ms`} class="lg:border-l lg:border-surface/15 lg:pl-6">
+                <p class="font-serif text-h3 italic text-surface">{c.a}</p>
+                <p class="mt-1.5 text-fine text-faint">{c.b}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <p class="mt-10 max-w-md text-body text-surface/80 max-lg:mx-auto" data-reveal style="--d:360ms">
+          Adiar custa caro. Não é só o momento. É sua autoestima, sua relação com o seu
+          próprio corpo.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. Respiro: a virada -->
+    <Respiro frase="Você não está quebrada. Seu corpo pode sentir mais." />
+
+    <!-- 5. Mecanismo -->
+    <Secao fundo="surface">
+      <div class="lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-start lg:gap-16">
+        <div>
+          <p class="eyebrow">O que ninguém te explicou</p>
+          <h2 class="mt-2 text-h2">
+            Existe um ciclo no corpo que <span class="italic text-brand">bloqueia o prazer.</span>
+          </h2>
+        </div>
+        <div class="mt-6 max-w-xl space-y-4 max-lg:mx-auto lg:mt-2">
+          <p>
+            Não é falta de vontade. Não é frescura. É o seu sistema nervoso reagindo de
+            forma automática — e enquanto esse ciclo não for tratado na raiz, nenhuma
+            solução superficial vai funcionar de verdade.
+          </p>
+          <p class="font-semibold text-ink">
+            Quanto mais você tenta sem entender a causa, menos resultado tem.
+          </p>
+          <p>
+            O prazer feminino não nasce pronto. Ele é aprendido. Ou seja: é fisiologia.
+            E, assim como qualquer função do corpo, ele pode ser treinado.
+          </p>
+        </div>
+      </div>
+    </Secao>
+
+    <!-- 6. Apresentação do programa -->
+    <Secao fundo="branco">
+      <p class="eyebrow">Foi para quebrar esse ciclo que eu criei o</p>
+      <h2 class="mt-2 text-h2">
+        Desbloqueando <span class="italic text-brand">o Prazer</span>
+      </h2>
+      <p class="mx-auto mt-3 max-w-xl lg:mx-0">
+        Programa digital para melhorar seu desejo, prazer e orgasmo. É uma abordagem
+        diferente de tudo que você já tentou.
+      </p>
+      <p class="mt-4 text-fine font-semibold text-body">
+        Sem equipamentos · Sem exposição · 5 a 10 minutos por dia
+      </p>
+      <div class="mt-6">
+        <a href="#oferta" class="btn-brand">
+          {PRAZER.ctaLabel}
+          <span class="arrow arrow-down" aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </Secao>
+
+    <!-- 7. Como funciona: 4 etapas -->
+    <Secao fundo="wash">
+      <p class="eyebrow">Como funciona</p>
+      <h2 class="mt-2 text-h2">
+        Em 4 passos simples, <span class="italic text-brand">seu corpo aprende a responder diferente.</span>
+      </h2>
+
+      <ol class="mx-auto mt-8 max-w-2xl space-y-7 text-left lg:mx-0">
+        {
+          PRAZER.etapas.map((e, i) => (
+            <li class="flex items-baseline gap-4">
+              <span class="font-serif text-[2.5rem] leading-none font-medium text-brand" aria-hidden="true">
+                {i + 1}
+              </span>
+              <div>
+                <p class="eyebrow">{e.rotulo}</p>
+                <p class="mt-1 font-bold text-ink">{e.titulo}</p>
+                <p class="mt-1 text-fine">{e.texto}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </Secao>
+
+    <!-- 8. O que você recebe -->
+    <Secao fundo="branco">
+      <p class="eyebrow">O que você vai receber</p>
+      <h2 class="mt-2 text-h2">
+        Tudo o que você precisa, <span class="italic text-brand">organizado e guiado.</span>
+      </h2>
+
+      <ul class="mx-auto mt-8 max-w-2xl space-y-4 text-left lg:mx-0">
+        {
+          PRAZER.incluidos.map((item) => (
+            <li class="flex items-start gap-3">
+              <span
+                aria-hidden="true"
+                class="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-wash text-fine font-bold text-brand"
+              >
+                ✓
+              </span>
+              <span class="text-body">{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="mt-6 text-fine text-muted">
+        100% online · Acesso imediato · Acesso vitalício · Celular ou PC
+      </p>
+    </Secao>
+
+    <!-- 9. Benefícios -->
+    <Secao fundo="surface">
+      <h2 class="text-h2">
+        Com a prática correta, <span class="italic text-brand">você começa a perceber:</span>
+      </h2>
+      <ul class="mt-7 flex flex-wrap justify-center gap-2.5 lg:justify-start">
+        {
+          PRAZER.beneficios.map((b) => (
+            <li class="rounded-full border border-brand-hairline bg-brand-wash px-4 py-2 font-semibold text-ink">
+              {b}
+            </li>
+          ))
+        }
+      </ul>
+    </Secao>
+
+    <!-- 10. Autoridade -->
+    <Secao fundo="branco">
+      <div class="grid items-start gap-10 sm:grid-cols-[minmax(0,300px)_1fr]">
+        <Picture
+          src={mariana}
+          alt="Dra. Mariana Della Valentina, fisioterapeuta pélvica"
+          width={600}
+          densities={[1, 2]}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpg"
+          loading="lazy"
+          decoding="async"
+          class="mx-auto w-full max-w-xs rounded-2xl object-cover"
+        />
+        <div>
+          <p class="eyebrow">Quem vai te guiar nesse processo</p>
+          <h2 class="mt-2 text-h2">
+            Dra. Mariana <span class="italic text-brand">Della Valentina</span>
+          </h2>
+          <p class="mt-3">
+            Fisioterapeuta pélvica com mais de 10 anos de formação e experiência
+            clínica. Mestre em Ciências da Reabilitação (UFCSPA), doutoranda, professora
+            de pós-graduação e palestrante em congressos nacionais e internacionais.
+          </p>
+          <p class="mt-3">
+            Ao longo de anos de consultório, ficou claro: a maioria das mulheres nunca
+            tratou o problema da forma certa. O {PRAZER.nome} nasceu para mudar isso.
+          </p>
+          <ul class="mt-5 flex flex-wrap justify-center gap-2 text-fine lg:justify-start">
+            {
+              PRAZER.credenciais.map((c) => (
+                <li class="rounded-full border border-line bg-card-alt px-3 py-1 font-semibold text-body">
+                  {c}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </Secao>
+
+    <!-- 11. Caixa de oferta -->
+    <Secao fundo="wash" id="oferta">
+      <div class="mx-auto max-w-xl overflow-hidden rounded-2xl bg-card shadow-xl shadow-brand-line/40">
+        <div class="bg-brand px-6 py-7 text-center">
+          <h2 class="text-h3 font-bold text-white">
+            Acesso imediato ao {PRAZER.nome}
+          </h2>
+          <p class="mt-1 text-fine text-white/85">
+            Programa digital · por {PRAZER.autora}
+          </p>
+        </div>
+
+        <div class="p-6 sm:p-8">
+          <p class="eyebrow">O que está incluído</p>
+          <ul class="mt-3 space-y-2 text-left">
+            {
+              PRAZER.incluidos.map((item) => (
+                <li class="flex items-start gap-2.5 text-body">
+                  <span
+                    aria-hidden="true"
+                    class="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-wash text-fine font-bold text-brand"
+                  >
+                    ✓
+                  </span>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="mt-7 text-center">
+            <p class="text-fine text-muted">de <s>{PRAZER.ancoragemFmt}</s> por</p>
+            <p class="font-serif text-price font-medium text-brand">{PRAZER.precoFmt}</p>
+            <p class="mt-1 text-fine text-muted">ou {PRAZER.parcelasFmt}</p>
+          </div>
+
+          <div class="mt-6 rounded-xl border border-brand-hairline bg-brand-wash p-4 text-center">
+            <p class="font-bold text-ink">Garantia de {PRAZER.garantiaDias} dias</p>
+            <p class="mt-1 text-fine">
+              Experimente com total segurança. Se não fizer sentido, você pede o
+              reembolso — sem burocracia, sem perguntas, sem julgamento. 100% do valor
+              devolvido.
+            </p>
+          </div>
+
+          <div class="mt-6">
+            <a href={PRAZER.checkoutUrl} data-checkout class="btn-brand w-full text-lg">
+              {PRAZER.ctaLabel}
+              <span class="arrow arrow-right" aria-hidden="true">→</span>
+            </a>
+            <p class="mt-2 text-center text-fine text-muted">
+              Acesso liberado imediatamente após a confirmação do pagamento.
+            </p>
+          </div>
+
+          <ul class="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 border-t border-line pt-5 text-fine text-muted">
+            <li>🔒 Pagamento seguro</li>
+            <li>∞ Acesso vitalício</li>
+          </ul>
+
+          <p class="mt-4 text-center text-fine text-muted">
+            Compra discreta — na fatura aparece um nome neutro, sem referência ao
+            conteúdo.
+          </p>
+        </div>
+      </div>
+    </Secao>
+
+    <!-- 12. FAQ -->
+    <Secao fundo="branco">
+      <h2 class="text-h2 text-center">
+        Talvez você esteja pensando <span class="italic text-brand">em algo assim…</span>
+      </h2>
+
+      <div class="mx-auto mt-8 max-w-2xl space-y-3">
+        {
+          PRAZER.faq.map((item) => (
+            <details class="faq-item">
+              <summary class="text-left">{item.q}</summary>
+              <p class="px-5 pb-5 text-left text-body">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </Secao>
+
+    <!-- 13. Última chamada -->
+    <Secao fundo="wash">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-h2">
+          O prazer feminino não nasce pronto. Ele é aprendido.<br />
+          <span class="italic text-brand">Com método. Com ciência. No seu ritmo.</span>
+        </h2>
+        <div class="mt-7">
+          <a href="#oferta" class="btn-brand">
+            {PRAZER.ctaLabel}
+            <span class="arrow arrow-down" aria-hidden="true">↓</span>
+          </a>
+          <p class="mt-2.5 text-fine text-muted">
+            Acesso imediato · Garantia de {PRAZER.garantiaDias} dias · Acesso vitalício
+          </p>
+        </div>
+      </div>
+    </Secao>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="border-t border-line bg-footer py-10 text-center">
+    <div class="mx-auto w-full max-w-5xl px-5 sm:px-8">
+      <p class="font-bold text-ink">
+        Desbloqueando <span class="text-brand">o Prazer</span>
+      </p>
+      <p class="mt-1 text-fine text-muted">Por {PRAZER.autora} — Fisioterapeuta Pélvica · CREFITO 213.111-F</p>
+      <p class="mx-auto mt-4 max-w-lg text-fine text-muted">
+        Este produto não substitui acompanhamento médico ou fisioterapêutico presencial.
+        Resultados podem variar. Todos os direitos reservados.
+      </p>
+      <!-- FALTA: CNPJ, contato de suporte, política de privacidade e termos -->
+    </div>
+  </footer>
+
+  <!-- JS: UTM → checkout, InitiateCheckout, ViewOffer, scroll-reveal -->
+  <script is:inline define:vars={{ nome: PRAZER.nome, valor: PRAZER.preco }}>
+    (function () {
+      var qs = location.search;
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[data-checkout]') : null;
+        if (!a) return;
+        if (qs.length > 1) {
+          try {
+            var u = new URL(a.href);
+            new URLSearchParams(qs).forEach(function (v, k) {
+              u.searchParams.set(k, v);
+            });
+            a.href = u.toString();
+          } catch (_) {}
+        }
+        if (window.fbq)
+          fbq('track', 'InitiateCheckout', { content_name: nome, value: valor, currency: 'BRL' });
+      });
+
+      if (
+        !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        'IntersectionObserver' in window
+      ) {
+        document.documentElement.classList.add('reveal-ready');
+        var rio = new IntersectionObserver(
+          function (es) {
+            es.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-in');
+                rio.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.06 }
+        );
+        document.querySelectorAll('[data-reveal]').forEach(function (el) {
+          rio.observe(el);
+        });
+      }
+
+      var oferta = document.getElementById('oferta');
+      if (oferta && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entradas) {
+          entradas.forEach(function (en) {
+            if (en.isIntersecting) {
+              if (window.fbq)
+                fbq('trackCustom', 'ViewOffer', { content_name: nome });
+              io.disconnect();
+            }
+          });
+        });
+        io.observe(oferta);
+      }
+    })();
+  </script>
+</Base>
