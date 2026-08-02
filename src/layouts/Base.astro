@@ -2,9 +2,20 @@
 import '../styles/global.css';
 import { OFERTA } from '../data/oferta';
 
-const titulo = 'Liberdade Íntima — Reduza a dor na relação em até 21 dias';
-const descricao =
-  'Reduza a dor, a ardência e o travamento do corpo em até 21 dias com um protocolo prático, privado e baseado em neurociência. Sem medicamentos. Sem exposição. Por Dra. Mariana Della Valentina, fisioterapeuta pélvica.';
+interface Props {
+  titulo?: string;
+  descricao?: string;
+  /** ViewContent no load (padrão: sim — LP). Página de obrigado desliga. */
+  viewContent?: boolean;
+  /** Página fora do índice de busca (obrigado). */
+  noindex?: boolean;
+}
+const {
+  titulo = 'Liberdade Íntima — Reduza a dor na relação em até 21 dias',
+  descricao = 'Reduza a dor, a ardência e o travamento do corpo em até 21 dias com um protocolo prático, privado e baseado em neurociência. Sem medicamentos. Sem exposição. Por Dra. Mariana Della Valentina, fisioterapeuta pélvica.',
+  viewContent = true,
+  noindex = false,
+} = Astro.props;
 // Canonical segue o caminho real da página (ex.: /liberdade/)
 const url = new URL(Astro.url.pathname, Astro.site ?? 'https://mariana-produtos.vercel.app').toString();
 ---
@@ -17,6 +28,7 @@ const url = new URL(Astro.url.pathname, Astro.site ?? 'https://mariana-produtos.
     <title>{titulo}</title>
     <meta name="description" content={descricao} />
     <link rel="canonical" href={url} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#fdf6f0" />
 
@@ -36,7 +48,7 @@ const url = new URL(Astro.url.pathname, Astro.site ?? 'https://mariana-produtos.
     <!-- Meta Pixel: stub imediato (eventos entram na fila), script
          injetado no window.load para não competir com fontes/imagens
          pela banda no primeiro render. Nenhum evento se perde. -->
-    <script is:inline define:vars={{ pixelId: OFERTA.pixelId, valor: OFERTA.preco, nome: OFERTA.nome }}>
+    <script is:inline define:vars={{ pixelId: OFERTA.pixelId, valor: OFERTA.preco, nome: OFERTA.nome, viewContent }}>
       !(function (f) {
         if (f.fbq) return;
         var n = (f.fbq = function () {
@@ -50,7 +62,8 @@ const url = new URL(Astro.url.pathname, Astro.site ?? 'https://mariana-produtos.
       })(window);
       fbq('init', pixelId);
       fbq('track', 'PageView');
-      fbq('track', 'ViewContent', { content_name: nome, value: valor, currency: 'BRL' });
+      if (viewContent)
+        fbq('track', 'ViewContent', { content_name: nome, value: valor, currency: 'BRL' });
       addEventListener('load', function () {
         var t = document.createElement('script');
         t.async = !0;

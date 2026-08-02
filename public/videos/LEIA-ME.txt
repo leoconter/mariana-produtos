@@ -1,0 +1,15 @@
+VÍDEO DA PÁGINA DE OBRIGADO
+===========================
+
+Coloque o arquivo do vídeo NESTA pasta com o nome exato:
+
+    obrigado.mp4
+
+→ caminho final: public/videos/obrigado.mp4
+
+A página /obrigado detecta o arquivo automaticamente no próximo
+build/deploy (basta commitar e dar push). Formato recomendado:
+MP4 (H.264 + AAC), vertical 9:16, de preferência < 50MB.
+
+Se o arquivo passar de ~100MB, o GitHub recusa o push — nesse
+caso me avise que eu configuro hospedagem externa do vídeo.

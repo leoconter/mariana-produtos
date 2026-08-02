@@ -1,0 +1,228 @@
+---
+/**
+ * Página de obrigado (/obrigado) — pós-compra do Liberdade Íntima.
+ * Estrutura e copy seguem a página atual (Base44): confirmação →
+ * vídeo vertical → argumento → upsell "Destravando o Prazer".
+ *
+ * VÍDEO: coloque o arquivo em  public/videos/obrigado.mp4
+ * (a página detecta no build; enquanto não existir, mostra um
+ * placeholder apenas em dev e nada em produção).
+ */
+import fs from 'node:fs';
+import Base from '../layouts/Base.astro';
+
+const VIDEO_PUBLICO = '/videos/obrigado.mp4';
+const temVideo = fs.existsSync(new URL('../../public/videos/obrigado.mp4', import.meta.url));
+
+// Checkout do upsell (recuperado da página atual)
+const CHECKOUT_UPSELL = 'https://pay.kirvano.com/f0e3309d-20e9-44e0-bf51-6d33f3d5e74f';
+
+const aprende = [
+  'Despertar o desejo de forma natural',
+  'Facilitar o orgasmo',
+  'Melhorar sua resposta ao prazer',
+  'Reconectar mente e corpo',
+];
+const resultados = [
+  'Sentir mais prazer com menos esforço',
+  'Ter uma resposta natural do seu corpo',
+  'Se sentir mais solta e confiante',
+  'Não precisar "forçar" o momento',
+  'Viver uma intimidade mais leve e prazerosa',
+];
+---
+
+<Base
+  titulo="Compra confirmada — Liberdade Íntima"
+  descricao="Seu acesso ao Liberdade Íntima está sendo preparado. Confira seu e-mail."
+  viewContent={false}
+  noindex
+>
+  <main class="text-center">
+    <!-- 1. Confirmação da compra -->
+    <section class="bg-surface">
+      <div class="mx-auto w-full max-w-3xl px-5 pt-12 pb-8 sm:px-8 sm:pt-16">
+        <p
+          class="anim-rise mx-auto flex w-max items-center gap-2 rounded-full border border-brand-hairline bg-card px-4 py-1.5 text-fine font-bold text-ink"
+        >
+          <span class="text-brand" aria-hidden="true">✓</span> Compra confirmada
+        </p>
+        <h1 class="anim-rise mt-4 text-h2" style="animation-delay: 0.06s;">
+          Seu acesso já está sendo preparado
+        </h1>
+        <p class="anim-rise mx-auto mt-3 max-w-md" style="animation-delay: 0.1s;">
+          Você receberá todos os detalhes no seu e-mail em alguns minutos.
+        </p>
+
+        <p
+          class="anim-rise mx-auto mt-8 max-w-md font-serif text-h3 italic text-ink"
+          style="animation-delay: 0.16s;"
+        >
+          Agora eu preciso te mostrar uma coisa importante antes de você sair…
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. Vídeo (vertical 9:16) — arquivo em public/videos/obrigado.mp4 -->
+    <section class="bg-surface pb-12">
+      <div class="mx-auto w-full max-w-3xl px-5 sm:px-8">
+        {
+          temVideo ? (
+            <video
+              src={VIDEO_PUBLICO}
+              controls
+              playsinline
+              preload="metadata"
+              class="mx-auto aspect-[9/16] w-full max-w-[320px] rounded-2xl border border-line bg-ink shadow-xl"
+            />
+          ) : import.meta.env.DEV ? (
+            <div class="mx-auto flex aspect-[9/16] w-full max-w-[320px] items-center justify-center rounded-2xl border-2 border-dashed border-brand-line bg-brand-wash p-6 text-fine text-muted">
+              Vídeo: coloque o arquivo em public/videos/obrigado.mp4
+            </div>
+          ) : null
+          /* FALTA: arquivo do vídeo em public/videos/obrigado.mp4 */
+        }
+      </div>
+    </section>
+
+    <!-- 3. O argumento: a dor resolve, o prazer não é automático -->
+    <section class="bg-ink">
+      <div class="mx-auto w-full max-w-3xl px-5 py-14 sm:px-8 sm:py-16">
+        <p class="eyebrow text-brand-soft">Você resolveu a dor…</p>
+        <h2 class="mt-2 text-h2 text-surface">
+          O prazer <span class="italic text-brand-soft">não é automático</span>
+        </h2>
+        <p class="mx-auto mt-4 max-w-xl text-surface/80">
+          Muitas mulheres deixam de sentir dor… mas continuam com baixa sensibilidade,
+          pouco desejo e dificuldade de sentir prazer.
+        </p>
+        <p class="mx-auto mt-3 max-w-xl font-serif text-h3 italic text-surface">
+          O corpo aprende a se defender… mas também precisa aprender a sentir prazer.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. Upsell: Destravando o Prazer -->
+    <section class="bg-card">
+      <div class="mx-auto w-full max-w-3xl px-5 py-14 sm:px-8 sm:py-16">
+        <p class="eyebrow">O próximo passo depois do Liberdade Íntima</p>
+        <h2 class="mt-2 text-h2">
+          Destravando <span class="italic text-brand">o Prazer</span>
+        </h2>
+        <p class="mx-auto mt-3 max-w-xl">
+          Um método para ensinar seu corpo a sentir prazer de verdade.
+        </p>
+
+        <div class="mx-auto mt-8 grid max-w-2xl gap-6 text-left sm:grid-cols-2">
+          <div class="rounded-xl border border-line bg-card-alt p-5">
+            <h3 class="text-h3">Você aprende como</h3>
+            <ul class="mt-3 space-y-2">
+              {
+                aprende.map((item) => (
+                  <li class="flex items-start gap-2.5 text-body">
+                    <span class="mt-2.5 size-1 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="rounded-xl border border-brand-hairline bg-brand-wash p-5">
+            <h3 class="text-h3">Para você</h3>
+            <ul class="mt-3 space-y-2">
+              {
+                resultados.map((item) => (
+                  <li class="flex items-start gap-2.5 text-body">
+                    <span class="mt-2.5 size-1 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        <p class="mx-auto mt-7 max-w-xl font-serif text-h3 italic text-ink">
+          Sem esse processo, a relação continua "ok"… mas nunca realmente boa.
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. Oferta exclusiva -->
+    <section class="bg-brand-wash">
+      <div class="mx-auto w-full max-w-3xl px-5 py-14 sm:px-8 sm:py-16">
+        <div class="mx-auto max-w-md rounded-2xl bg-card p-7 shadow-xl shadow-brand-line/40 sm:p-8">
+          <p class="eyebrow">Oferta exclusiva</p>
+          <p class="mt-2 font-semibold text-ink">
+            Como você já deu o primeiro passo, você pode acessar o Destravando o Prazer
+            agora por um valor especial.
+          </p>
+
+          <div class="mt-5">
+            <p class="text-fine text-muted">de <s>R$ 109</s> por apenas</p>
+            <p class="font-serif text-price font-medium text-brand">R$37</p>
+            <p class="mt-1 text-fine text-muted">pagamento único</p>
+          </div>
+
+          <p class="mt-3 text-fine text-muted">Essa condição aparece apenas nesta página.</p>
+
+          <a
+            href={CHECKOUT_UPSELL}
+            data-checkout
+            class="btn-brand mt-5 w-full"
+          >
+            Quero destravar meu prazer agora
+            <span class="arrow arrow-right" aria-hidden="true">→</span>
+          </a>
+
+          <p class="mt-4 text-fine text-muted">
+            Acesso imediato · Conteúdo privado · Compra segura
+          </p>
+          <p class="mt-2 text-fine text-muted">
+            Você tem 7 dias para testar. Se não fizer sentido pra você, basta pedir o
+            reembolso.
+          </p>
+        </div>
+
+        <p class="mt-6">
+          <a href="#fim" id="fim" class="text-fine text-muted underline underline-offset-2">
+            Prefiro continuar sem o Destravando o Prazer
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. Rodapé mínimo -->
+    <footer class="border-t border-line bg-footer py-8">
+      <p class="px-5 text-fine text-muted">
+        Liberdade Íntima · Por Dra. Mariana Della Valentina
+      </p>
+    </footer>
+  </main>
+
+  <!-- UTM → checkout do upsell + InitiateCheckout -->
+  <script is:inline>
+    (function () {
+      var qs = location.search;
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[data-checkout]') : null;
+        if (!a) return;
+        if (qs.length > 1) {
+          try {
+            var u = new URL(a.href);
+            new URLSearchParams(qs).forEach(function (v, k) {
+              u.searchParams.set(k, v);
+            });
+            a.href = u.toString();
+          } catch (_) {}
+        }
+        if (window.fbq)
+          fbq('track', 'InitiateCheckout', {
+            content_name: 'Destravando o Prazer',
+            value: 37,
+            currency: 'BRL',
+          });
+      });
+    })();
+  </script>
+</Base>
