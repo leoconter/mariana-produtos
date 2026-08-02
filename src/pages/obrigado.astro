@@ -9,10 +9,13 @@
  * placeholder apenas em dev e nada em produção).
  */
 import fs from 'node:fs';
+import path from 'node:path';
 import Base from '../layouts/Base.astro';
 
 const VIDEO_PUBLICO = '/videos/obrigado.mp4';
-const temVideo = fs.existsSync(new URL('../../public/videos/obrigado.mp4', import.meta.url));
+// Resolve a partir da raiz do projeto (import.meta.url aponta para o
+// módulo compilado durante o build e falha a detecção)
+const temVideo = fs.existsSync(path.join(process.cwd(), 'public/videos/obrigado.mp4'));
 
 // Checkout do upsell (recuperado da página atual)
 const CHECKOUT_UPSELL = 'https://pay.kirvano.com/f0e3309d-20e9-44e0-bf51-6d33f3d5e74f';
