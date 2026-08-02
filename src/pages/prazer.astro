@@ -13,6 +13,12 @@ import Respiro from '../components/primitivos/Respiro.astro';
 import { PRAZER } from '../data/prazer/oferta';
 import mockup from '../assets/prazer/mockup.png';
 import mariana from '../assets/prazer/mariana.jpg';
+import etapa1 from '../assets/prazer/etapa-1.png';
+import etapa2 from '../assets/prazer/etapa-2.png';
+import etapa3 from '../assets/prazer/etapa-3.png';
+import etapa4 from '../assets/prazer/etapa-4.png';
+
+const capasEtapas = [etapa1, etapa2, etapa3, etapa4];
 ---
 
 <Base
@@ -186,23 +192,53 @@ import mariana from '../assets/prazer/mariana.jpg';
       </div>
     </Secao>
 
-    <!-- 7. Como funciona: 4 etapas -->
+    <!-- 7. Como funciona: 4 módulos em vídeo. A entrega em vídeo fica
+         subentendida pelo visual (thumbnail + play + barra de player),
+         sem alterar a copy. -->
     <Secao fundo="wash">
       <p class="eyebrow">Como funciona</p>
       <h2 class="mt-2 text-h2">
         Em 4 passos simples, <span class="italic text-brand">seu corpo aprende a responder diferente.</span>
       </h2>
 
-      <ol class="mx-auto mt-8 max-w-2xl space-y-7 text-left lg:mx-0">
+      <ol class="mt-8 grid gap-5 text-left sm:grid-cols-2 sm:gap-6">
         {
           PRAZER.etapas.map((e, i) => (
-            <li class="flex items-baseline gap-4">
-              <span class="font-serif text-[2.5rem] leading-none font-medium text-brand" aria-hidden="true">
-                {i + 1}
-              </span>
-              <div>
+            <li
+              class="overflow-hidden rounded-2xl border border-line bg-card shadow-sm"
+              data-reveal
+              style={`--d:${i * 90}ms`}
+            >
+              <!-- Thumbnail com affordance de vídeo -->
+              <div class="relative">
+                <Picture
+                  src={capasEtapas[i]}
+                  alt={`Vídeo do módulo ${i + 1}: ${e.rotulo}`}
+                  width={640}
+                  densities={[1, 2]}
+                  formats={['avif', 'webp']}
+                  fallbackFormat="png"
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-[2/1] w-full object-cover"
+                />
+                <span
+                  class="absolute inset-0 flex items-center justify-center bg-ink/15"
+                  aria-hidden="true"
+                >
+                  <span class="flex size-14 items-center justify-center rounded-full bg-card/95 pl-1 text-xl text-brand shadow-lg">
+                    ▶
+                  </span>
+                </span>
+                <!-- barra de player: progresso = posição do módulo (1/4 → 4/4) -->
+                <span class="absolute inset-x-0 bottom-0 h-1 bg-ink/25" aria-hidden="true">
+                  <span class="block h-full bg-brand" style={`width:${((i + 1) / 4) * 100}%`}></span>
+                </span>
+              </div>
+
+              <div class="p-5">
                 <p class="eyebrow">{e.rotulo}</p>
-                <p class="mt-1 font-bold text-ink">{e.titulo}</p>
+                <p class="mt-1.5 font-bold text-ink">{e.titulo}</p>
                 <p class="mt-1 text-fine">{e.texto}</p>
               </div>
             </li>
