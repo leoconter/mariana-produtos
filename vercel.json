@@ -1,5 +1,6 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/liberdade", "permanent": false }
+    { "source": "/", "destination": "/liberdade", "permanent": false },
+    { "source": "/obrigado", "destination": "/obrigado-li", "permanent": false }
   ]
 }
